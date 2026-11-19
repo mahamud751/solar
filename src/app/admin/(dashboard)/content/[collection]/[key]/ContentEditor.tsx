@@ -2,6 +2,8 @@
 
 import { useId, useState } from "react";
 import type { CollectionName, JsonValue } from "@/data/catalog";
+import { isImageField } from "@/data/media";
+import { ImageField } from "../../../media/ImageField";
 import { emptyField, fieldChoices, isSharedField, variableList } from "@/data/content-fields";
 import { ActionForm } from "../../../../ActionForm";
 import { saveContent } from "../../../../actions";
@@ -90,8 +92,9 @@ function Fields({ value, template, onChange, collection, field, language, root =
     </label>;
   }
 
-  const choices = fieldChoices(collection, field);
   const text = typeof value === "string" ? value : "";
+  if (isImageField(field)) return <ImageField label={label} value={text} onChange={onChange} />;
+  const choices = fieldChoices(collection, field);
   return <div className="admin-field">
     <label htmlFor={id}>{label}</label>
     {choices ? (

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { FileText, Plus, SlidersHorizontal } from "lucide-react";
+import { ChevronRight, Plus, SlidersHorizontal } from "lucide-react";
+import { adminIcon } from "../../admin-icons";
 import { AdminHeading, EmptyState, ResetFilters, SearchField, Status, TableFrame } from "../../AdminUI";
 import { notFound } from "next/navigation";
 import { collectionLabel, fixedGroups, isCollection, isFixed, type JsonValue } from "@/data/catalog";
@@ -37,10 +38,11 @@ export default async function ContentList({ params, searchParams }: {
       (!q || `${row.key} ${row.title}`.toLowerCase().includes(q.toLowerCase())) &&
       (!status || row.published === (status === "published")));
   const base = `/admin/content/${collection}`;
+  const Icon = adminIcon(collection);
 
   return (
     <>
-      <AdminHeading title={collectionLabel(collection)}
+      <AdminHeading icon={Icon} eyebrow={fixed ? "Configuration" : "Website content"} title={collectionLabel(collection)}
         description={fixed ? "Update the information shown on the website." : "Edit entries, manage drafts, and control their display order."}
         action={!fixed && <Link href={`${base}/new`} className="admin-button admin-button-primary"><Plus size={18} aria-hidden="true" /> Add entry</Link>} />
       <form className="admin-filters">
@@ -51,27 +53,28 @@ export default async function ContentList({ params, searchParams }: {
           </select>
         </label>}
         <div className="admin-filter-actions">
-          <button className="admin-button" type="submit"><SlidersHorizontal size={16} aria-hidden="true" /> Apply filters</button>
+          <button className="admin-button admin-button-primary" type="submit"><SlidersHorizontal size={16} aria-hidden="true" /> Apply filters</button>
           {(q || status) && <ResetFilters href={base} />}
         </div>
       </form>
       <TableFrame title="Entries" count={`${items.length} of ${rows.length}`}>
         {items.length ? <div className="admin-table-scroll" role="region" aria-label="Content entries" tabIndex={0}>
           <table className="admin-table admin-table-content">
-            <thead><tr><th scope="col">Entry</th>{!fixed && <><th scope="col">Status</th><th scope="col">Order</th></>}</tr></thead>
+            <thead><tr><th scope="col">Entry</th>{!fixed && <><th scope="col">Status</th><th scope="col">Order</th></>}<th scope="col" className="admin-table-chevron"><span className="sr-only">Open</span></th></tr></thead>
             <tbody>
               {items.map(({ key, title, published, position }) => (
                 <tr key={key}>
                   <td><div className="admin-table-name">
-                    <span className="admin-item-icon"><FileText size={16} aria-hidden="true" /></span>
-                    <div><Link href={`${base}/${key}`}>{title}</Link>{!fixed && <small>{key}</small>}</div>
+                    <span className="admin-item-icon" data-tone="mint"><Icon size={17} aria-hidden="true" /></span>
+                    <div><Link className="admin-row-link" href={`${base}/${key}`}>{title}</Link>{!fixed && <small>{key}</small>}</div>
                   </div></td>
-                  {!fixed && <><td><Status tone={published ? "published" : "draft"}>{published ? "Published" : "Draft"}</Status></td><td className="admin-order">{position}</td></>}
+                  {!fixed && <><td><Status tone={published ? "published" : "draft"}>{published ? "Published" : "Draft"}</Status></td><td className="admin-order">#{position}</td></>}
+                  <td className="admin-table-chevron"><ChevronRight size={18} aria-hidden="true" /></td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div> : <EmptyState icon={FileText} title={q || status ? "No matching entries" : "No entries yet"}
+        </div> : <EmptyState icon={Icon} title={q || status ? "No matching entries" : "No entries yet"}
           detail={q || status ? "Try changing your search or filters." : "Add an entry to start building this collection."} />}
       </TableFrame>
     </>

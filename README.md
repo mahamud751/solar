@@ -29,7 +29,7 @@ unset solar_admin_password
 
 - Use **Services**, **Blog articles**, **FAQs**, **Testimonials**, **Project showcase**, **Equipment brands**, **Electricity utilities**, and **Cities and districts** to add entries, set their order, publish or unpublish them, and delete them. Slugs stay fixed after creation so existing URLs remain stable.
 - Use **Page sections**, **English and Bangla text**, **Page SEO**, and **Company settings** to edit existing pages and the shared company information. The calculator rates and pricing assumptions are editable under **Electricity utilities** and **Page sections**.
-- Use **Media library** to upload a JPEG, PNG or WebP image up to 4 MB. Copy its image path into a content field. The app stores uploaded images in PostgreSQL.
+- Use **Upload image** in any image field to preview and upload a JPEG, PNG or WebP image up to 4 MB. You can also choose an existing upload from the **Media library**. Save the entry to apply the selected image. The media library stores uploads in PostgreSQL and offers enlarged previews.
 - Use **Inquiries** to search requests, filter by type or status, and record follow-up notes. Staff follow up from the inbox using the saved contact details.
 
 The seed adds initial content and can be rerun. It preserves edits, drafts, and deletions. The default content includes the existing sample company phone and other marketing details, which can be updated in the admin.

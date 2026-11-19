@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { SlidersHorizontal } from "lucide-react";
-import { AdminHeading, ResetFilters, SearchField, TableFrame } from "../AdminUI";
+import { Inbox, SlidersHorizontal } from "lucide-react";
+import { AdminHeading, Pagination, ResetFilters, SearchField, TableFrame } from "../AdminUI";
 import { InquiryTable } from "./InquiryTable";
 import { z } from "zod";
 import type { Prisma } from "@/generated/prisma/client";
@@ -47,7 +46,7 @@ export default async function InquiryList({ searchParams }: {
 
   return (
     <>
-      <AdminHeading title="Inquiries" description="Review requests and track follow-up with customers and partners." />
+      <AdminHeading icon={Inbox} eyebrow="Workspace" title="Inquiries" description="Review requests and track follow-up with customers and partners." />
       <form className="admin-filters">
         <SearchField value={q} label="Search contacts" placeholder="Name, email, phone or city" />
         <label className="admin-field">Status
@@ -63,18 +62,14 @@ export default async function InquiryList({ searchParams }: {
           </select>
         </label>
         <div className="admin-filter-actions">
-          <button className="admin-button" type="submit"><SlidersHorizontal size={16} aria-hidden="true" /> Apply filters</button>
+          <button className="admin-button admin-button-primary" type="submit"><SlidersHorizontal size={16} aria-hidden="true" /> Apply filters</button>
           {(q || status || kind) && <ResetFilters href="/admin/inquiries" />}
         </div>
       </form>
       <TableFrame title="Inbox" count={`${total} ${total === 1 ? "request" : "requests"}`}>
         <InquiryTable entries={entries} filtered={Boolean(q || status || kind)} />
       </TableFrame>
-      {pages > 1 && <nav className="mt-4 flex items-center gap-3" aria-label="Inquiry pages">
-        {page > 1 && <Link className="admin-button" href={pageLink(page - 1)}>Previous</Link>}
-        <p className="text-sm font-semibold">Page {page} of {pages}</p>
-        {page < pages && <Link className="admin-button" href={pageLink(page + 1)}>Next</Link>}
-      </nav>}
+      <Pagination page={page} pages={pages} href={pageLink} label="Inquiry pages" />
     </>
   );
 }

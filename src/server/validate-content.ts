@@ -1,3 +1,4 @@
+import { isImageField, isImagePath } from "@/data/media";
 import { contentTemplate, type CollectionName, type JsonValue } from "@/data/catalog";
 import { fieldChoices, isSharedField, variableList } from "@/data/content-fields";
 
@@ -43,9 +44,9 @@ export function prepareContent(collection: CollectionName, key: string, data: un
       if (shared) return text;
       const choices = fieldChoices(collection, field);
       if (choices && !choices.includes(text)) throw new Error(`Select an option for ${label(path)}.`);
-      const image = ["image", "img"].includes(field) || field.endsWith("Image");
+      const image = isImageField(field);
       const link = /(?:Href|Url)$/.test(field) || path.includes("socials") || field === "to";
-      if (image && (text || published) && !/^\/(?:images|media)\/[a-zA-Z0-9/_\.%-]+$/.test(text)) {
+      if (image && (text || published) && !isImagePath(text)) {
         throw new Error(`${label(path)} must use a local /images/ or /media/ path.`);
       }
       if (link && text && !/^(?:\/(?![/\\])[^\\\s]*|https:\/\/[^\\\s]+)$/i.test(text)) {

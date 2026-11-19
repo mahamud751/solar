@@ -1,16 +1,15 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import sharp from "sharp";
 import { requireAdmin } from "@/server/admin";
 import { database } from "@/server/db";
-import type { FormState } from "../../actions";
+import { imageFormatHint, maxImageBytes, type MediaAsset } from "@/data/media";
 
-export async function uploadImage(_: FormState, form: FormData): Promise<FormState> {
+export async function uploadImage(form: FormData): Promise<{ asset: MediaAsset } | { error: string }> {
   await requireAdmin();
   const file = form.get("image");
-  if (!(file instanceof File) || !file.size || file.size > 4 * 1024 * 1024) {
-    return { error: "Choose a JPEG, PNG or WebP image up to 4 MB." };
+  if (!(file instanceof File) || !file.size || file.size > maxImageBytes) {
+    return { error: imageFormatHint };
   }
   let data: Uint8Array<ArrayBuffer>;
   try {
@@ -25,7 +24,7 @@ export async function uploadImage(_: FormState, form: FormData): Promise<FormSta
   }
   const asset = await database().mediaAsset.create({
     data: { filename: file.name.replace(/[\u0000-\u001f]/g, "").slice(0, 160) || "Image", data },
-    select: { id: true },
+    select: { id: true, filename: true },
   });
-  redirect(`/admin/media?uploaded=${asset.id}`);
+  return { asset };
 }

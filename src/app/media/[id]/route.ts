@@ -1,8 +1,9 @@
+import { mediaIdPattern } from "@/data/media";
 import { database } from "@/server/db";
 
 export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  if (!/^c[a-z0-9]{24}$/.test(id)) return new Response(null, { status: 404 });
+  if (!mediaIdPattern.test(id)) return new Response(null, { status: 404 });
   const asset = await database().mediaAsset.findUnique({ where: { id }, select: { data: true } });
   if (!asset) return new Response(null, { status: 404 });
 

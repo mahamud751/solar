@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { ShieldAlert } from "lucide-react";
 import { AdminHeading } from "../../../AdminUI";
+import { adminIcon } from "../../../admin-icons";
 import { notFound } from "next/navigation";
 import { collectionLabel, contentTemplate, isCollection, isFixed, type JsonValue } from "@/data/catalog";
 import { emptyField } from "@/data/content-fields";
@@ -35,7 +37,9 @@ export default async function EditContent({ params, searchParams }: {
   return (
     <>
       <Link className="admin-back-link" href={`/admin/content/${collection}`}>{collectionLabel(collection)}</Link>
-      <AdminHeading title={creating ? "Add entry" : key.toLowerCase().replace(/[-_]/g, " ")} />
+      <AdminHeading icon={adminIcon(collection)} eyebrow={collectionLabel(collection)}
+        title={creating ? "Add entry" : key.toLowerCase().replace(/[-_]/g, " ").replace(/\b\w/, (c) => c.toUpperCase())}
+        description={creating ? "Fill in the fields below, then save to add it to the website." : "Edit the fields below and save your changes."} />
       {saved === "1" && <p className="admin-notice" role="status">Changes saved.</p>}
       <div className="admin-panel mt-5">
         <ContentEditor key={version || `${collection}/${key}`} collection={collection} entryKey={creating ? null : key}
@@ -43,8 +47,8 @@ export default async function EditContent({ params, searchParams }: {
           published={entry?.published ?? fixed} version={version} fixed={fixed}
         />
       </div>
-      {entry && !fixed && <details className="admin-panel mt-5">
-        <summary className="cursor-pointer font-bold text-red-900">Delete entry</summary>
+      {entry && !fixed && <details className="admin-panel admin-danger">
+        <summary><ShieldAlert size={18} aria-hidden="true" /> Danger zone · Delete entry</summary>
         <ActionForm action={deleteContent.bind(null, collection, key)} submit="Permanently delete" danger className="mt-4">
           <input type="hidden" name="version" value={version} />
           <label className="flex items-center gap-2 text-sm font-semibold">
