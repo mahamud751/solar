@@ -1,0 +1,1014 @@
+@import "tailwindcss";
+
+/*
+ * Green Dhaka design tokens (mirrors greendhaka-main/src/styles.css).
+ * --primary is the brand green used for fills; --primary-deep is the
+ * readable green for text on light backgrounds (5.7:1 on white).
+ */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.985 0.006 194);
+  --foreground: oklch(0.28 0.075 244);
+  --surface: oklch(0.975 0.01 190);
+  --surface-muted: oklch(0.96 0.012 190);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.28 0.075 244);
+  --primary: oklch(0.83 0.18 143);
+  --primary-hex: #79e475;
+  --primary-foreground: oklch(0.24 0.065 244);
+  --primary-deep: oklch(0.5 0.13 148);
+  --primary-soft: oklch(0.955 0.045 150);
+  --secondary: oklch(0.28 0.075 244);
+  --secondary-foreground: oklch(0.985 0.006 194);
+  --teal: oklch(0.7 0.11 187);
+  --accent: oklch(0.94 0.035 187);
+  --accent-foreground: oklch(0.28 0.075 244);
+  --muted: oklch(0.96 0.012 190);
+  --destructive: oklch(0.577 0.245 27.325);
+  --ring: oklch(0.7 0.11 187);
+  --gold: oklch(72% 0.145 58);
+  --gold-soft: oklch(96.8% 0.032 78);
+  --success: oklch(56.1% 0.134 154.9);
+  --success-soft: oklch(96.5% 0.017 162.8);
+  --muted-foreground: oklch(0.48 0.045 230);
+  --border: oklch(0.9 0.022 195);
+  --ink-deep: oklch(0.24 0.065 244);
+
+  --gradient-brand: linear-gradient(135deg, var(--primary), var(--teal));
+  --gradient-hero: linear-gradient(150deg, oklch(0.42 0.09 205) 0%, oklch(0.32 0.08 235) 50%, oklch(0.24 0.065 244) 100%);
+  --gradient-gold: linear-gradient(135deg, #f6c44c 0%, #e08a1a 100%);
+  --gradient-hero-paper: radial-gradient(
+      115% 75% at 86% 14%,
+      oklch(0.93 0.05 187 / 0.72) 0%,
+      transparent 56%
+    ),
+    radial-gradient(
+      85% 58% at 10% 88%,
+      oklch(0.95 0.06 143 / 0.42) 0%,
+      transparent 52%
+    ),
+    linear-gradient(180deg, oklch(0.975 0.014 190), oklch(0.992 0.005 194));
+
+  --shadow-card: 0 1px 2px oklch(0.28 0.075 244 / 0.04),
+    0 6px 20px -10px oklch(0.28 0.075 244 / 0.1);
+  --shadow-elevated: 0 4px 12px -4px oklch(0.28 0.075 244 / 0.07),
+    0 20px 40px -16px oklch(0.28 0.075 244 / 0.15);
+  --shadow-glow: 0 14px 32px -10px oklch(0.7 0.14 160 / 0.45);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-deep: var(--primary-deep);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-teal: var(--teal);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-destructive: var(--destructive);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ink-deep: var(--ink-deep);
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-sora), var(--font-manrope), ui-sans-serif, system-ui,
+    sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-border);
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Bangla type: Sora/Manrope have no Bengali glyphs — swap to Hind Siliguri when <html lang="bn">. */
+html:lang(bn) body {
+  font-family: var(--font-hind-siliguri), var(--font-sans);
+}
+html:lang(bn) :is(h1, h2, h3, .font-display) {
+  font-family: var(--font-hind-siliguri), var(--font-display);
+}
+
+.bg-brand-gradient {
+  background-image: var(--gradient-brand);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* WCAG 2.4.11 Focus Not Obscured: keep focused controls clear of fixed header */
+  scroll-padding-top: 5.25rem;
+  caret-color: var(--primary);
+  accent-color: var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+/* Visually hidden live region & skip utilities */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Focus rings */
+:where(a, button, summary, input, select, textarea, [tabindex="0"]):focus-visible {
+  outline: 2.5px solid var(--primary);
+  outline-offset: 2.5px;
+}
+
+/* ==========================================================================
+   Site Header — Modern Web Guidance: navbar + shrinking-header-on-scroll
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 50;
+  block-size: 4.75rem;
+  display: flex;
+  align-items: center;
+  background: oklch(0.99 0.005 194 / 0.86);
+  backdrop-filter: blur(14px);
+  border-block-end: 1px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.site-header.is-scrolled {
+  background: oklch(100% 0 0 / 0.94);
+  border-block-end-color: var(--border);
+  box-shadow: 0 4px 20px -10px oklch(0.28 0.075 244 / 0.14);
+}
+
+/* Native Scroll-Driven shrinking header with full feature detection */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
+    @keyframes solnce-header-shrink {
+      to {
+        block-size: 3.85rem;
+        background: oklch(100% 0 0 / 0.95);
+        border-block-end-color: var(--border);
+        box-shadow: 0 8px 28px -14px oklch(0.28 0.075 244 / 0.16);
+      }
+    }
+
+    .site-header {
+      animation: solnce-header-shrink auto linear both;
+      animation-timeline: scroll(block root);
+      animation-range: 0px 140px;
+    }
+  }
+}
+
+.site-header.is-measuring * {
+  transition: none !important;
+}
+
+.header-inner {
+  inline-size: 100%;
+  max-inline-size: 78rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.header-inner > * {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.site-header .menu-button {
+  anchor-name: --menu-button;
+}
+
+/* Narrow layout: Popover Navigation (default before script measures is-wide) */
+.site-header .site-menu {
+  position: fixed;
+  inset: auto;
+  /* Absolute fallback for browsers without CSS Anchor Positioning */
+  inset-block-start: 4.75rem;
+  inset-block-start: anchor(--menu-button bottom);
+  inset-inline-end: 1rem;
+  inline-size: min(86dvw, 22rem);
+  max-inline-size: calc(100dvw - 2rem);
+  block-size: fit-content;
+  max-block-size: calc(100dvh - 6rem);
+  margin-block-start: 0.5rem;
+  padding: 0.75rem;
+  overflow: auto;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow-elevated);
+  list-style: none;
+}
+
+.site-header .site-menu:not(:is(:popover-open, .\:popover-open)) {
+  display: none;
+}
+
+.site-header .site-menu:is(:popover-open, .\:popover-open) {
+  display: grid;
+  gap: 0.25rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-header .site-menu[popover] {
+    opacity: 0;
+    translate: 0 -0.4rem;
+    transition: opacity 0.2s ease-out, translate 0.2s ease-out, display 0.2s, overlay 0.2s;
+    transition-behavior: allow-discrete;
+  }
+
+  .site-header .site-menu[popover]:is(:popover-open, .\:popover-open) {
+    opacity: 1;
+    translate: 0 0;
+
+    @starting-style {
+      opacity: 0;
+      translate: 0 -0.4rem;
+    }
+  }
+}
+
+/* Wide layout: Inline Navigation */
+.site-header.is-wide .menu-button {
+  display: none;
+}
+
+.site-header.is-wide .site-menu {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  inline-size: auto;
+  max-inline-size: none;
+  block-size: auto;
+  max-block-size: none;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  opacity: 1;
+  translate: none;
+}
+
+.site-header.is-wide .site-menu::backdrop {
+  display: none;
+}
+
+/* Wide floating submenu popover with Anchor Positioning + fallback */
+.site-header.is-wide .dropdown-list[popover] {
+  /* fixed: the anchor lives in the fixed header, so the menu must track the viewport, not the page */
+  position: fixed;
+  position-area: block-end span-inline-end;
+  position-try-fallbacks: flip-block, flip-inline;
+  inset: auto;
+  height: auto;
+  inline-size: min(90dvw, 34rem);
+  margin-block-start: 0.55rem;
+  overflow: visible;
+  padding: 0.75rem;
+  border-radius: 1.125rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow-elevated);
+}
+
+@supports not (position-area: block-end) {
+  .site-header.is-wide .dropdown-list[popover] {
+    position: fixed;
+    margin: 0;
+  }
+}
+
+/* Hover bridge across gap above submenu */
+.site-header.is-wide .dropdown-list::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 100%;
+  block-size: 0.65rem;
+}
+
+.site-header.is-wide .dropdown-list:not(:is(:popover-open, .\:popover-open)) {
+  display: none;
+}
+
+.site-header.is-wide .dropdown-list:is(:popover-open, .\:popover-open) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+/* Compact single-column dropdowns (Our Offerings, Solar Solutions) */
+.site-header.is-wide .dropdown-list.dropdown-compact[popover] {
+  inline-size: min(90dvw, 18rem);
+}
+.site-header.is-wide .dropdown-list.dropdown-compact:is(:popover-open, .\:popover-open) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-header.is-wide .dropdown-list[popover] {
+    opacity: 0;
+    translate: 0 -0.35rem;
+    transition: opacity 0.18s ease-out, translate 0.18s ease-out, display 0.18s, overlay 0.18s;
+    transition-behavior: allow-discrete;
+  }
+
+  .site-header.is-wide .dropdown-list[popover]:is(:popover-open, .\:popover-open) {
+    opacity: 1;
+    translate: 0 0;
+
+    @starting-style {
+      opacity: 0;
+      translate: 0 -0.35rem;
+    }
+  }
+}
+
+/* Narrow submenu disclosure */
+.site-header:not(.is-wide) .dropdown-list[hidden] {
+  display: none;
+}
+
+@supports (interpolate-size: allow-keywords) {
+  @media (prefers-reduced-motion: no-preference) {
+    .site-header:not(.is-wide) .dropdown-list {
+      interpolate-size: allow-keywords;
+      clip-path: inset(-6px);
+      transition: block-size 0.25s ease-out, content-visibility 0.25s ease-out;
+      transition-behavior: allow-discrete;
+    }
+    .site-header:not(.is-wide) .dropdown-list[hidden] {
+      display: grid;
+      block-size: 0;
+      content-visibility: hidden;
+    }
+  }
+}
+
+/* Current page visual indicator (WCAG 1.4.1 non-color-only indicator) */
+.nav-link[aria-current="page"] {
+  color: var(--primary-deep);
+  background: var(--primary-soft);
+  font-weight: 700;
+  position: relative;
+}
+
+.nav-link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0.75rem;
+  inset-block-end: 0.2rem;
+  block-size: 2px;
+  border-radius: 999px;
+  background: var(--primary);
+}
+
+@media (forced-colors: active) {
+  .nav-link[aria-current="page"] {
+    outline: 2px solid Highlight;
+  }
+}
+
+/* ==========================================================================
+   Scroll Entry Reveal — Modern Web Guidance: scroll-entry-exit-effects
+   ========================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes solnce-reveal-up {
+      from {
+        opacity: 0.15;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal-on-scroll {
+      animation: solnce-reveal-up auto ease-out both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 32%;
+    }
+  }
+}
+
+/* ==========================================================================
+   Accessible Native <details> Accordion — Modern Web Guidance: accordion
+   ========================================================================== */
+.solnce-accordion details {
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.solnce-accordion details[open] {
+  border-color: oklch(0.7 0.14 160 / 0.45);
+  box-shadow: var(--shadow-elevated);
+}
+
+.solnce-accordion summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.25rem 1.4rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink-deep);
+  cursor: pointer;
+  user-select: none;
+}
+
+.solnce-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.solnce-accordion summary::before {
+  content: "";
+  inline-size: 1.15rem;
+  block-size: 1.15rem;
+  flex-shrink: 0;
+  background-color: var(--primary);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+  rotate: -90deg;
+}
+
+.solnce-accordion summary:dir(rtl)::before {
+  rotate: 90deg;
+}
+
+.solnce-accordion details[open] > summary::before {
+  rotate: 0deg;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .solnce-accordion summary::before {
+    transition: rotate 0.22s ease;
+  }
+}
+
+.solnce-accordion details::details-content {
+  interpolate-size: allow-keywords;
+  overflow: clip;
+  contain: layout;
+}
+
+.solnce-accordion details:not([open])::details-content {
+  block-size: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .solnce-accordion details::details-content {
+    transition: block-size 0.3s ease-in-out, content-visibility 0.3s ease-in-out,
+      display 0.3s ease-in-out;
+    transition-behavior: allow-discrete;
+  }
+}
+
+/* ==========================================================================
+   Form Validation After Interaction — Modern Web Guidance
+   ========================================================================== */
+.solnce-field .error-msg {
+  display: none;
+  color: #b42318;
+  font-size: 0.825rem;
+  font-weight: 500;
+  margin-top: 0.35rem;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.solnce-field :is(input, select, textarea):is(:user-invalid, .user-invalid-fallback) {
+  border-color: #d92d20;
+  background-color: #fef3f2;
+}
+
+.solnce-field:has(:is(input, select, textarea):is(:user-invalid, .user-invalid-fallback))
+  .error-msg {
+  display: flex;
+}
+
+.solnce-field :is(input, select, textarea):is(:user-valid, .user-valid-fallback) {
+  border-color: var(--success);
+}
+
+/* ==========================================================================
+   Accessible Marquees (WCAG 2.2.2 Pauseable + Reduced Motion Static)
+   ========================================================================== */
+@keyframes solnce-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: solnce-marquee 34s linear infinite;
+  }
+  .marquee-track.marquee-slow {
+    animation-duration: 54s;
+  }
+  .marquee-track:hover,
+  .marquee-track[data-paused="true"] {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-viewport {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* Subtle decorative solar grid backdrop */
+.bg-hero-paper {
+  background: var(--gradient-hero-paper);
+}
+
+.bg-solnce-blue {
+  background: var(--gradient-hero);
+}
+
+.bg-solnce-gold {
+  background: var(--gradient-gold);
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.solar-walkout { height: 170svh; --exit: 0; }
+.solar-stage { height: 100svh; position: sticky; top: 0; overflow: hidden; display: grid; align-items: center; }
+.solar-scene, .solar-wash { position: absolute; inset: 0; }
+.solar-scene {
+  background: #9abfd0 url('/images/residential-solar.jpg') center / cover;
+  transform: translate(calc(4% * (1 - var(--exit))), calc(1% * (1 - var(--exit)))) scale(calc(1.08 - .08 * var(--exit)));
+}
+.solar-wash { background: linear-gradient(90deg, #faf9f4 3%, #faf9f4ed 28%, #faf9f49c 47%, transparent 72%); opacity: calc(1 - var(--exit)); }
+.solar-intro {
+  position: relative; margin-inline: max(5vw, calc((100vw - 88rem) / 2)); max-width: 32rem;
+  opacity: calc(1 - var(--exit)); transform: translateY(calc(-32px * var(--exit))) scale(calc(1 - .04 * var(--exit)));
+  filter: blur(calc(8px * var(--exit))); color: var(--secondary);
+}
+.solar-intro h1 { font: 500 clamp(2.2rem, 4vw, 3.6rem)/1.03 Georgia, serif; letter-spacing: -.035em; }
+.solar-intro h1 span { display: block; margin-top: .75rem; color: var(--primary-deep); font-size: .48em; letter-spacing: 0; }
+.solar-intro p { margin: 1.3rem 0; max-width: 26rem; line-height: 1.6; }
+@media (max-width: 700px) {
+  .solar-wash { background: linear-gradient(90deg, #faf9f4f5, #faf9f4d9 70%, #faf9f488); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .solar-walkout { height: auto; }
+  .solar-stage { position: relative; }
+  .solar-scene { transform: none; }
+}
+
+@layer components {
+/* ==========================================================================
+   Solnce Motion System — site-wide animation layer
+   Pure CSS; every effect is disabled under prefers-reduced-motion.
+   ========================================================================== */
+@keyframes solnce-rise {
+  from { opacity: 0; transform: translateY(22px); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes solnce-fade-scale {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes solnce-orb-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(6%, -8%, 0) scale(1.08); }
+  66% { transform: translate3d(-5%, 6%, 0) scale(0.95); }
+}
+@keyframes solnce-shine {
+  from { translate: -120% 0; }
+  to { translate: 220% 0; }
+}
+@keyframes solnce-gradient-pan {
+  to { background-position: 200% center; }
+}
+@keyframes solnce-ping {
+  75%, 100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes solnce-spin {
+  to { rotate: 360deg; }
+}
+@keyframes solnce-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+@keyframes solnce-progress {
+  from { scale: 0 1; }
+  to { scale: 1 1; }
+}
+
+/* ---- Animated gradient headline text ---- */
+.text-gradient {
+  background: linear-gradient(90deg, oklch(0.5 0.13 148), oklch(0.55 0.1 190) 30%, #e08a1a 55%, oklch(0.5 0.13 148) 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- Hero backdrop orbs (any .bg-hero-paper section) ---- */
+.bg-hero-paper {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+.bg-hero-paper::before,
+.bg-hero-paper::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+.bg-hero-paper::before {
+  inline-size: 38rem;
+  block-size: 38rem;
+  inset-block-start: -12rem;
+  inset-inline-end: -10rem;
+  background: radial-gradient(circle, oklch(0.85 0.09 187 / 0.45), transparent 65%);
+}
+.bg-hero-paper::after {
+  inline-size: 30rem;
+  block-size: 30rem;
+  inset-block-end: -10rem;
+  inset-inline-start: -8rem;
+  background: radial-gradient(circle, oklch(0.9 0.12 143 / 0.4), transparent 65%);
+}
+
+/* ---- Live status dot ---- */
+.live-dot {
+  position: relative;
+  display: inline-flex;
+  inline-size: 0.55rem;
+  block-size: 0.55rem;
+  border-radius: 999px;
+  background: var(--success);
+}
+.live-dot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  opacity: 0.6;
+}
+
+/* ---- Scroll progress bar ---- */
+.scroll-progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 60;
+  block-size: 3px;
+  background: linear-gradient(90deg, #f6c44c, var(--primary), var(--teal));
+  transform-origin: 0 50%;
+  scale: 0 1;
+  pointer-events: none;
+  display: none;
+}
+
+/* ---- Interactive cards: lift + glow ---- */
+:is(a, .card-lift).shadow-card,
+.card-lift {
+  transition: translate 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease,
+    border-color 0.3s ease, background-color 0.3s ease;
+}
+:is(a, .card-lift).shadow-card:hover,
+.card-lift:hover {
+  translate: 0 -4px;
+  box-shadow: var(--shadow-elevated);
+  border-color: oklch(0.7 0.14 160 / 0.45);
+}
+.card-lift .icon-pop,
+a.shadow-card .icon-pop {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease,
+    color 0.3s ease;
+}
+.card-lift:hover .icon-pop,
+a.shadow-card:hover .icon-pop {
+  transform: scale(1.12) rotate(-6deg);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ---- Primary buttons: light sweep + glow ---- */
+:is(a, button):is(.bg-solnce-blue, .bg-brand-gradient) {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: translate 0.2s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+:is(a, button):is(.bg-solnce-blue, .bg-brand-gradient)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  inline-size: 45%;
+  background: linear-gradient(100deg, transparent, oklch(100% 0 0 / 0.38), transparent);
+  translate: -120% 0;
+  pointer-events: none;
+}
+:is(a, button):is(.bg-solnce-blue, .bg-brand-gradient):hover {
+  box-shadow: 0 18px 38px -12px oklch(0.7 0.14 160 / 0.6);
+  filter: saturate(1.1);
+}
+:is(a, button):is(.bg-solnce-blue, .bg-brand-gradient) :is(svg:last-child) {
+  transition: transform 0.25s ease;
+}
+:is(a, button):is(.bg-solnce-blue, .bg-brand-gradient):hover :is(svg:last-child) {
+  transform: translateX(3px);
+}
+
+/* ---- Nav links: growing underline ---- */
+.site-header.is-wide .nav-link {
+  position: relative;
+}
+.site-header.is-wide .nav-link::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0.75rem;
+  inset-block-end: 0.2rem;
+  block-size: 2px;
+  border-radius: 999px;
+  background: var(--primary);
+  scale: 0 1;
+  transition: scale 0.25s ease;
+}
+.site-header.is-wide .nav-link:hover::after,
+.site-header.is-wide .nav-link[aria-current="page"]::after {
+  scale: 1 1;
+}
+
+/* ---- Form fields: icon, soft surface, focus glow, valid check ---- */
+.field-control {
+  position: relative;
+}
+.field-input {
+  display: block;
+  inline-size: 100%;
+  block-size: 3.25rem;
+  padding-inline: 2.85rem 2.6rem;
+  border-radius: 0.95rem;
+  border: 1.5px solid var(--border);
+  background: linear-gradient(180deg, oklch(0.985 0.006 194), #fff);
+  box-shadow: inset 0 1px 2px oklch(0.28 0.075 244 / 0.04);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink-deep);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.25s ease, background 0.2s ease;
+}
+.field-input::placeholder {
+  color: oklch(0.48 0.045 230 / 0.5);
+  font-weight: 400;
+}
+.field-input:hover {
+  border-color: oklch(0.7 0.14 160 / 0.45);
+}
+.field-input:focus,
+.field-input:focus-visible {
+  outline: none;
+  background: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px oklch(0.83 0.18 143 / 0.18),
+    0 8px 22px -10px oklch(0.7 0.14 160 / 0.45);
+}
+.field-select {
+  appearance: none;
+  cursor: pointer;
+  padding-inline-end: 2.85rem;
+}
+.field-icon,
+.field-check,
+.field-chevron {
+  position: absolute;
+  inset-block-start: 50%;
+  translate: 0 -50%;
+  inline-size: 1.15rem;
+  block-size: 1.15rem;
+  pointer-events: none;
+}
+.field-icon {
+  inset-inline-start: 1rem;
+  color: oklch(0.48 0.045 230 / 0.6);
+  transition: color 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.field-chevron {
+  inset-inline-end: 1rem;
+  color: var(--muted-foreground);
+  transition: color 0.2s ease, rotate 0.25s ease;
+}
+.field-check {
+  inset-inline-end: 0.85rem;
+  inline-size: 1.35rem;
+  block-size: 1.35rem;
+  padding: 0.22rem;
+  border-radius: 999px;
+  background: var(--success);
+  color: var(--primary-foreground);
+  stroke-width: 3.5;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.field-control:focus-within .field-icon {
+  color: var(--primary);
+  transform: scale(1.12);
+}
+.field-control:focus-within .field-chevron {
+  color: var(--primary);
+  rotate: 180deg;
+}
+.field-control:has(:is(input:user-valid, .user-valid-fallback)) .field-check {
+  opacity: 1;
+  transform: scale(1);
+}
+.field-control:has(:is(:user-invalid, .user-invalid-fallback)) .field-icon {
+  color: #d92d20;
+}
+.solnce-field label {
+  letter-spacing: -0.005em;
+}
+
+/* ---- City chips ---- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, translate 0.2s ease;
+}
+.chip:hover {
+  color: var(--primary-deep);
+  border-color: oklch(0.7 0.14 160 / 0.45);
+  background: var(--primary-soft);
+  translate: 0 -2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero entrance: badge → h1 → lead → following blocks, plus right column */
+  .bg-hero-paper :is(span, div):has(+ h1),
+  .bg-hero-paper h1,
+  .bg-hero-paper h1 + p,
+  .bg-hero-paper h1 + p + *,
+  .bg-hero-paper h1 + p + * + *,
+  .rise {
+    animation: solnce-rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .bg-hero-paper h1 { animation-delay: 0.08s; }
+  .bg-hero-paper h1 + p { animation-delay: 0.18s; }
+  .bg-hero-paper h1 + p + * { animation-delay: 0.28s; }
+  .bg-hero-paper h1 + p + * + * { animation-delay: 0.38s; }
+  .bg-hero-paper > div > .grid > :nth-child(2),
+  .bg-hero-paper > div > div > .grid > :nth-child(2),
+  .rise-panel {
+    animation: solnce-fade-scale 0.9s 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .rise-1 { animation-delay: 0.1s; }
+  .rise-2 { animation-delay: 0.2s; }
+  .rise-3 { animation-delay: 0.3s; }
+  .rise-4 { animation-delay: 0.4s; }
+  .rise-5 { animation-delay: 0.5s; }
+  .rise-6 { animation-delay: 0.6s; }
+
+  .bg-hero-paper::before { animation: solnce-orb-drift 18s ease-in-out infinite; }
+  .bg-hero-paper::after { animation: solnce-orb-drift 22s ease-in-out -6s infinite reverse; }
+
+  .text-gradient { animation: solnce-gradient-pan 6s linear infinite; }
+  .live-dot::before { animation: solnce-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+  .spin-slow { animation: solnce-spin 14s linear infinite; }
+  .float-y { animation: solnce-float 4s ease-in-out infinite; }
+
+  :is(a, button):is(.bg-solnce-blue, .bg-brand-gradient):hover::after {
+    animation: solnce-shine 0.85s ease;
+  }
+  :is(a, button):is(.bg-solnce-blue, .bg-brand-gradient):hover {
+    translate: 0 -2px;
+  }
+
+  /* Scroll-driven reveal for every content card below the fold */
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    main :is(.rounded-2xl, .rounded-3xl).shadow-card:not(.rise, .marquee-track *),
+    main .reveal-on-scroll {
+      animation: solnce-reveal-up auto ease-out both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 32%;
+    }
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress {
+      display: block;
+      animation: solnce-progress auto linear both;
+      animation-timeline: scroll(block root);
+    }
+  }
+}
+
+/* ---- Route transitions (React <ViewTransition>) ---- */
+@keyframes solnce-vt-out {
+  to { opacity: 0; transform: translateY(-10px); }
+}
+@keyframes solnce-vt-in {
+  from { opacity: 0; transform: translateY(14px); }
+}
+::view-transition-old(.page) {
+  animation: solnce-vt-out 0.2s ease-in both;
+}
+::view-transition-new(.page) {
+  animation: solnce-vt-in 0.38s 0.08s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+}

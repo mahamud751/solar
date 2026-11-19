@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum InquiryStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CLOSED
+}
+
+enum InquiryKind {
+  QUOTE
+  CONSULTATION
+  PARTNERSHIP
+  ESTIMATE
+}
+
+model ContentEntry {
+  collection String
+  key        String
+  data       Json
+  position   Int      @default(0)
+  published  Boolean  @default(false)
+  updatedAt  DateTime @updatedAt
+
+  @@id([collection, key])
+  @@index([collection, published, position])
+}
+
+model Inquiry {
+  id          String        @id @db.Uuid
+  kind        InquiryKind
+  fullName    String?
+  phone       String?
+  email       String?
+  city        String?
+  monthlyBill String?
+  segment     String?
+  source      String
+  status      InquiryStatus @default(NEW)
+  notes       String        @default("")
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([status, createdAt])
+  @@index([createdAt])
+}
+
+model Admin {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  passwordHash String
+  sessions     AdminSession[]
+}
+
+model AdminSession {
+  tokenHash String   @id
+  expiresAt DateTime
+  adminId   String
+  admin     Admin    @relation(fields: [adminId], references: [id], onDelete: Cascade)
+
+  @@index([adminId, expiresAt])
+}
+
+model LoginThrottle {
+  key       String   @id
+  attempts  Int      @default(1)
+  expiresAt DateTime
+
+  @@index([expiresAt])
+}
+
+model MediaAsset {
+  id        String   @id @default(cuid())
+  filename  String
+  data      Bytes
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+model AppliedContentSeed {
+  collection String
+  key        String
+
+  @@id([collection, key])
+}
