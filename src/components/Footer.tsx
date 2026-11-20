@@ -59,7 +59,7 @@ export function Footer() {
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 rounded-3xl border border-white/10 bg-gradient-to-br from-[oklch(0.36_0.08_215)] via-secondary to-[oklch(0.24_0.065_244)] p-7 sm:p-10 lg:grid-cols-12">
             <div className="lg:col-span-6">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-[#F6C44C]">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-primary">
                 <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                 {t("Clear-Sky Rooftop Estimate", "ক্লিয়ার-স্কাই ছাদের হিসাব", "footer/clear-sky-rooftop-estimate")}
               </span>

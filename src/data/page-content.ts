@@ -169,7 +169,7 @@ const OFF_GRID_EN: Guide = {
     h: "Financing for off-grid systems",
     p: [
       "Off-grid systems are not eligible for net metering, but green-financing schemes through Bangladesh Bank and IDCOL partner banks can lower your interest rate.",
-      "Green Dhaka also offers 0% down EMI plans of up to 24 months.",
+      "Green Dhaka also offers 20% down EMI plans of up to 24 months.",
     ],
   },
   prices: [
@@ -220,7 +220,7 @@ const OFF_GRID_BN: Guide = {
     h: "অফ-গ্রিড সিস্টেমের জন্য ফাইন্যান্সিং",
     p: [
       "অফ-গ্রিড সিস্টেম নেট মিটারিংয়ের আওতায় পড়ে না, তবে বাংলাদেশ ব্যাংক ও IDCOL অংশীদার ব্যাংকের গ্রিন-ফাইন্যান্সিং স্কিমে সুদের হার কমতে পারে।",
-      "গ্রিন ঢাকা ২৪ মাস পর্যন্ত ০% ডাউন EMI প্ল্যানও দেয়।",
+      "গ্রিন ঢাকা ২৪ মাস পর্যন্ত ২০% ডাউন EMI প্ল্যানও দেয়।",
     ],
   },
   prices: [
@@ -294,7 +294,7 @@ type GuideCopy = {
 
 export const GUIDE_LABELS: Bi<GuideCopy> = {
   en: {
-    chips: ["20,000+ happy families", "25-year warranty", "0% down EMI"],
+    chips: ["20,000+ happy families", "25-year warranty", "20% down EMI"],
     whatIs: "What is it?",
     components: "System components",
     didYouKnow: "Did you know?",
@@ -328,7 +328,7 @@ export const GUIDE_LABELS: Bi<GuideCopy> = {
     faqHeading: "Frequently asked questions",
   },
   bn: {
-    chips: ["২০,০০০+ সন্তুষ্ট পরিবার", "২৫ বছরের ওয়ারেন্টি", "০% ডাউন EMI"],
+    chips: ["২০,০০০+ সন্তুষ্ট পরিবার", "২৫ বছরের ওয়ারেন্টি", "২০% ডাউন EMI"],
     whatIs: "এটি কী?",
     components: "সিস্টেমের উপাদান",
     didYouKnow: "আপনি কি জানেন?",
@@ -390,7 +390,7 @@ export const OFFER_TABS: Bi<Offer[]> = {
       img: homesImg,
       headline: "Solar for Homes",
       d: "Save up to 90% on your home electricity bills.",
-      points: ["0% down EMI available", "Net-metering paperwork handled for you", "Installed in as little as 7 days"],
+      points: ["20% down EMI available", "Net-metering paperwork handled for you", "Installed in as little as 7 days"],
       cta: "Explore solar for homes",
     },
     {
@@ -419,7 +419,7 @@ export const OFFER_TABS: Bi<Offer[]> = {
       img: homesImg,
       headline: "বাসাবাড়ির জন্য সোলার",
       d: "আপনার বাসার বিদ্যুৎ বিল ৯০% পর্যন্ত সাশ্রয় করুন।",
-      points: ["০% ডাউন EMI-র সুযোগ", "নেট-মিটারিং কাগজপত্র আমরাই সামলাই", "মাত্র ৭ দিনে ইনস্টলেশন"],
+      points: ["২০% ডাউন EMI-র সুযোগ", "নেট-মিটারিং কাগজপত্র আমরাই সামলাই", "মাত্র ৭ দিনে ইনস্টলেশন"],
       cta: "বাসাবাড়ির সোলার দেখুন",
     },
     {
@@ -531,8 +531,8 @@ export const ROOF_PRESETS: RoofPreset[] = [
     tariff: 10,
     roofArea: "450 sq.ft",
     image: "/images/residential-solar.jpg",
-    caption: "0% down EMI · net metering handled",
-    captionBn: "০% ডাউন EMI · নেট মিটারিং আমরাই করি",
+    caption: "20% down EMI · net metering handled",
+    captionBn: "২০% ডাউন EMI · নেট মিটারিং আমরাই করি",
   },
   {
     id: "commercial",
@@ -628,7 +628,7 @@ export const ASSOCIATE_BENEFITS = [
 export const HOMES: Bi<HOMESCopy> = {
   en: {
     h1a: "Go Solar at ", h1b: "Zero Investment",
-    sub: "Save up to 90% on your home electricity bills. 0% down EMI — your savings pay the instalment.",
+    sub: "Save up to 90% on your home electricity bills. 20% down EMI — your savings pay the instalment.",
     chips: ["20,000+ homes powered", "25-year warranty", "Installed in 7 days"],
     stats: [["20,000+", "Homes powered"], ["150 MW", "Installed"], ["৳250 Cr+", "Customer savings"], ["4.8★", "Average rating"]],
     introPill: "Introducing", introSub: "Our total-protection plan for every rooftop — generation guaranteed, repairs covered, service proactive.",
@@ -654,7 +654,7 @@ export const HOMES: Bi<HOMESCopy> = {
       ["How much can I actually save with solar?", "Typically 70–90% of your current bill. A 3 kW system in Dhaka generates roughly 360–400 units per month, depending on shading and roof orientation."],
       ["What makes Green Dhaka different from other solar providers?", "We are the only company in Bangladesh offering a Savings Guarantee with a money-back promise, plus BUET-approved storm-proof mounting and fully in-house installation."],
       ["I'm not sure if I have enough space for a solar system.", "One kW needs roughly 100 sq ft of shade-free roof. Most homes in Dhaka can host 3–5 kW. Our free survey confirms exactly what fits."],
-      ["Do I need to pay a huge amount upfront?", "No. With 0% down EMI your monthly instalment is usually lower than the bill savings from month one."],
+      ["Do I need to pay a huge amount upfront?", "No. You pay just 20% upfront, and the monthly EMI on the rest is usually lower than the bill savings from month one."],
       ["How complicated is the net-metering process?", "Not for you — we prepare the drawings, apply to your utility (DESCO/DPDC/REB) and commission the meter as part of the package."],
       ["How long does it take to set up the system?", "Installation takes as little as 7 days after design approval; the full journey including net-metering is typically 2–4 weeks."],
       ["What is the lifespan of a rooftop solar system?", "Panels carry a 25-year performance warranty and keep producing beyond that. Inverters typically last 10–15 years and are covered under our plan."],
@@ -676,7 +676,7 @@ export const HOMES: Bi<HOMESCopy> = {
   },
   bn: {
     h1a: "শূন্য বিনিয়োগে ", h1b: "সোলারে যান",
-    sub: "বাসার বিদ্যুৎ বিল ৯০% পর্যন্ত সাশ্রয় করুন। ০% ডাউন EMI — আপনার সাশ্রয়েই কিস্তি পরিশোধ হয়।",
+    sub: "বাসার বিদ্যুৎ বিল ৯০% পর্যন্ত সাশ্রয় করুন। ২০% ডাউন EMI — আপনার সাশ্রয়েই কিস্তি পরিশোধ হয়।",
     chips: ["২০,০০০+ বাসায় বিদ্যুৎ", "২৫ বছরের ওয়ারেন্টি", "৭ দিনে ইনস্টলেশন"],
     stats: [["20,000+", "বাসায় বিদ্যুৎ"], ["150 MW", "ইনস্টল করা"], ["৳250 Cr+", "গ্রাহকের সাশ্রয়"], ["4.8★", "গড় রেটিং"]],
     introPill: "পরিচয় করিয়ে দিচ্ছি", introSub: "প্রতিটি ছাদের জন্য আমাদের সম্পূর্ণ সুরক্ষা প্ল্যান — উৎপাদন নিশ্চিত, মেরামত কভার, সার্ভিস আগেভাগেই।",
@@ -702,7 +702,7 @@ export const HOMES: Bi<HOMESCopy> = {
       ["সোলারে আসলে কত সাশ্রয় হয়?", "সাধারণত বর্তমান বিলের ৭০–৯০%। ঢাকায় ৩ কিলোওয়াট সিস্টেম ছায়া ও ছাদের দিকের উপর নির্ভর করে মাসে প্রায় ৩৬০–৪০০ ইউনিট উৎপাদন করে।"],
       ["অন্য সোলার কোম্পানি থেকে গ্রিন ঢাকা কেন আলাদা?", "বাংলাদেশে শুধু আমরাই মানি-ব্যাক প্রতিশ্রুতিসহ সাশ্রয় গ্যারান্টি দিই, সাথে BUET অনুমোদিত ঝড়-প্রতিরোধী মাউন্টিং ও সম্পূর্ণ নিজস্ব ইনস্টলেশন।"],
       ["আমার ছাদে যথেষ্ট জায়গা আছে কিনা নিশ্চিত নই।", "প্রতি কিলোওয়াটে প্রায় ১০০ বর্গফুট ছায়ামুক্ত ছাদ লাগে। ঢাকার বেশিরভাগ বাসায় ৩–৫ কিলোওয়াট বসানো যায়। ফ্রি সার্ভেতে ঠিক কত বসবে তা নিশ্চিত হয়।"],
-      ["শুরুতে কি অনেক টাকা দিতে হবে?", "না। ০% ডাউন EMI-তে প্রথম মাস থেকেই কিস্তি সাধারণত বিলের সাশ্রয়ের চেয়ে কম হয়।"],
+      ["শুরুতে কি অনেক টাকা দিতে হবে?", "না। মাত্র ২০% আগে দিতে হয়, বাকি অংশের মাসিক কিস্তি সাধারণত প্রথম মাস থেকেই বিলের সাশ্রয়ের চেয়ে কম হয়।"],
       ["নেট-মিটারিং প্রক্রিয়া কতটা জটিল?", "আপনার জন্য নয় — ড্রয়িং তৈরি, বিতরণ কর্তৃপক্ষে (DESCO/DPDC/REB) আবেদন ও মিটার চালু সবই প্যাকেজের অংশ।"],
       ["সিস্টেম বসাতে কত সময় লাগে?", "ডিজাইন অনুমোদনের পর মাত্র ৭ দিনে ইনস্টলেশন; নেট-মিটারিংসহ পুরো প্রক্রিয়া সাধারণত ২–৪ সপ্তাহ।"],
       ["ছাদের সোলার সিস্টেম কত দিন চলে?", "প্যানেলে ২৫ বছরের পারফরম্যান্স ওয়ারেন্টি, এর পরেও উৎপাদন চলে। ইনভার্টার সাধারণত ১০–১৫ বছর চলে এবং আমাদের প্ল্যানে কভার।"],
@@ -739,7 +739,7 @@ export const SOCIETIES: Bi<SOCIETIESCopy> = {
     band: [
       ["Guaranteed savings with a money-back promise", "Generation is guaranteed under GreenSure™ — if the system under-delivers, we refund at ৳8 per unit."],
       ["Save more with net metering", "Under SREDA policy your society earns credits for surplus units exported to DESCO, DPDC, NESCO or REB."],
-      ["Financing options, tailored for you", "Reserve fund, per-flat contribution or bank EMI — including 0% down plans sized to the society's cash flow."],
+      ["Financing options, tailored for you", "Reserve fund, per-flat contribution or bank EMI — including 20% down plans sized to the society's cash flow."],
     ],
     beHeading: "When will you break even?", beSub: "Example: a typical mid-size Dhaka society",
     breakEven: [["50 kW", "Recommended system"], ["≈ ৳39,00,000", "System cost (indicative)"], ["≈ ৳13 lakh / yr", "Bill savings"], ["~3 years", "Break-even"], ["৳3.2 Cr+", "25-year savings"], ["100 kW+", "Hosted by many societies"]],
@@ -755,7 +755,7 @@ export const SOCIETIES: Bi<SOCIETIESCopy> = {
       ["What is the typical payback period for a solar system?", "For common-area loads, most societies break even in 3–4 years, then enjoy essentially free power for the remaining life of the system."],
       ["What happens if solar generation is lower than expected?", "Our GreenSure™ guarantee pays the difference — generation is guaranteed, backed by a money-back promise at ৳8 per unit."],
       ["How much rooftop space is needed for a solar installation?", "Roughly 100 sq ft per kW of shade-free roof. A 50 kW system needs about 5,000 sq ft — many Dhaka societies host 100 kW or more."],
-      ["What are the financing options available?", "Society reserve fund, per-flat contribution, or bank EMI. We help structure the option your committee prefers, including 0% down plans."],
+      ["What are the financing options available?", "Society reserve fund, per-flat contribution, or bank EMI. We help structure the option your committee prefers, including 20% down plans."],
       ["What maintenance does a solar system require?", "Periodic panel cleaning and annual electrical checks. Our plans include scheduled proactive maintenance visits at no extra cost."],
       ["Which solar panel is best for residential societies?", "Tier-1 mono PERC modules with a 25-year performance warranty — highest yield per square foot in Bangladesh's climate and heat."],
       ["How do we ensure the safety and longevity of the installation?", "BUET-approved storm-proof mounting tested to 170 kmph, TÜV-certified modules, IEC-certified inverters and insured workmanship by in-house engineers."],
@@ -783,7 +783,7 @@ export const SOCIETIES: Bi<SOCIETIESCopy> = {
     band: [
       ["মানি-ব্যাক প্রতিশ্রুতিসহ নিশ্চিত সাশ্রয়", "GreenSure™-এর অধীনে উৎপাদন নিশ্চিত — সিস্টেম কম দিলে ইউনিটপ্রতি ৳8 ফেরত দিই।"],
       ["নেট মিটারিংয়ে আরও সাশ্রয়", "SREDA নীতিমালায় DESCO, DPDC, NESCO বা REB-তে রপ্তানি করা বাড়তি ইউনিটে সোসাইটি ক্রেডিট পায়।"],
-      ["আপনার মতো করে ফাইন্যান্সিং", "রিজার্ভ ফান্ড, ফ্ল্যাটপ্রতি চাঁদা বা ব্যাংক EMI — সোসাইটির নগদ প্রবাহ অনুযায়ী ০% ডাউন প্ল্যানসহ।"],
+      ["আপনার মতো করে ফাইন্যান্সিং", "রিজার্ভ ফান্ড, ফ্ল্যাটপ্রতি চাঁদা বা ব্যাংক EMI — সোসাইটির নগদ প্রবাহ অনুযায়ী ২০% ডাউন প্ল্যানসহ।"],
     ],
     beHeading: "কবে বিনিয়োগ উঠে আসবে?", beSub: "উদাহরণ: ঢাকার একটি মাঝারি আকারের সোসাইটি",
     breakEven: [["50 kW", "সুপারিশকৃত সিস্টেম"], ["≈ ৳39,00,000", "সিস্টেমের খরচ (আনুমানিক)"], ["≈ ৳13 লাখ / বছর", "বিলে সাশ্রয়"], ["~৩ বছর", "বিনিয়োগ উদ্ধার"], ["৳3.2 Cr+", "২৫ বছরের সাশ্রয়"], ["100 kW+", "অনেক সোসাইটিতে বসানো"]],
@@ -799,7 +799,7 @@ export const SOCIETIES: Bi<SOCIETIESCopy> = {
       ["সাধারণত কত বছরে বিনিয়োগ উঠে আসে?", "কমন-এলাকার লোডে বেশিরভাগ সোসাইটি ৩–৪ বছরে বিনিয়োগ উঠিয়ে আনে, এরপর সিস্টেমের বাকি আয়ুতে কার্যত ফ্রি বিদ্যুৎ।"],
       ["প্রত্যাশার চেয়ে কম উৎপাদন হলে কী হবে?", "আমাদের GreenSure™ গ্যারান্টি পার্থক্য পরিশোধ করে — উৎপাদন নিশ্চিত, ইউনিটপ্রতি ৳8 মানি-ব্যাক প্রতিশ্রুতিসহ।"],
       ["সোলার বসাতে ছাদে কত জায়গা লাগে?", "প্রতি কিলোওয়াটে প্রায় ১০০ বর্গফুট ছায়ামুক্ত ছাদ। ৫০ কিলোওয়াটে প্রায় ৫,০০০ বর্গফুট — ঢাকার অনেক সোসাইটিতে ১০০ কিলোওয়াট বা তার বেশি বসানো যায়।"],
-      ["কী কী ফাইন্যান্সিং অপশন আছে?", "সোসাইটির রিজার্ভ ফান্ড, ফ্ল্যাটপ্রতি চাঁদা বা ব্যাংক EMI। কমিটি যেটি চায়, ০% ডাউন প্ল্যানসহ আমরা সেটি সাজিয়ে দিই।"],
+      ["কী কী ফাইন্যান্সিং অপশন আছে?", "সোসাইটির রিজার্ভ ফান্ড, ফ্ল্যাটপ্রতি চাঁদা বা ব্যাংক EMI। কমিটি যেটি চায়, ২০% ডাউন প্ল্যানসহ আমরা সেটি সাজিয়ে দিই।"],
       ["সোলার সিস্টেমে কী রক্ষণাবেক্ষণ লাগে?", "মাঝে মাঝে প্যানেল পরিষ্কার ও বার্ষিক বৈদ্যুতিক পরীক্ষা। আমাদের প্ল্যানে বাড়তি খরচ ছাড়াই নির্ধারিত রক্ষণাবেক্ষণ ভিজিট অন্তর্ভুক্ত।"],
       ["আবাসিক সোসাইটির জন্য কোন প্যানেল সেরা?", "২৫ বছরের পারফরম্যান্স ওয়ারেন্টিসহ টিয়ার-১ মনো PERC মডিউল — বাংলাদেশের আবহাওয়া ও তাপে প্রতি বর্গফুটে সর্বোচ্চ উৎপাদন।"],
       ["ইনস্টলেশনের নিরাপত্তা ও দীর্ঘস্থায়িত্ব কীভাবে নিশ্চিত হয়?", "১৭০ কিমি/ঘণ্টায় পরীক্ষিত BUET অনুমোদিত ঝড়-প্রতিরোধী মাউন্টিং, TÜV-সার্টিফায়েড মডিউল, IEC-সার্টিফায়েড ইনভার্টার এবং নিজস্ব প্রকৌশলীদের বিমাকৃত কাজ।"],
@@ -1011,11 +1011,149 @@ export const QUICK_ESTIMATOR = {
 export { CITY_PAGE } from "./city-copy";
 
 export const PAGE_IMAGES = {
-  homeHeroImage: "/images/residential-solar.jpg",
+  homeHeroImage: "/images/gd/hero-solar.jpg",
   homesHeroImage: "/images/gd/offer-homes.jpg",
   housingSocietyHeroImage: "/images/gd/offer-society.jpg",
   commercialHeroImage: "/images/gd/offer-commercial.jpg",
   guideHeroImage: "/images/gd/hero-solar.jpg",
   cityHeroImage: "/images/gd/hero-solar.jpg",
   aboutHeroImage: "/images/gd/hero-solar.jpg",
+};
+
+// Homepage sections ported from the Green Dhaka landing page.
+export const EQUIPMENT_PARTNERS: Bi<{ intro: string; heading: string; groups: { label: string; brands: string[] }[] }> = {
+  en: {
+    intro: "The equipment behind every Green Dhaka installation.",
+    heading: "Top brands we work with",
+    groups: [
+      { label: "Solar panels", brands: ["JinkoSolar", "LONGi", "Trina Solar", "JA Solar", "AIKO"] },
+      { label: "Inverters", brands: ["Huawei", "Sungrow", "GoodWe", "Deye", "Solis"] },
+      { label: "Batteries", brands: ["BYD", "Pylontech", "Dyness", "CATL", "EcoFlow"] },
+    ],
+  },
+  bn: {
+    intro: "প্রতিটি গ্রিন ঢাকা ইনস্টলেশনের পেছনের সরঞ্জাম।",
+    heading: "আমরা যেসব শীর্ষ ব্র্যান্ড নিয়ে কাজ করি",
+    groups: [
+      { label: "সোলার প্যানেল", brands: ["JinkoSolar", "LONGi", "Trina Solar", "JA Solar", "AIKO"] },
+      { label: "ইনভার্টার", brands: ["Huawei", "Sungrow", "GoodWe", "Deye", "Solis"] },
+      { label: "ব্যাটারি", brands: ["BYD", "Pylontech", "Dyness", "CATL", "EcoFlow"] },
+    ],
+  },
+};
+
+export const WARRANTY: Bi<{ pill: string; heading: string; cards: { t: string; d: string }[]; whyTitle: string; whyLead: string; whyBody: string }> = {
+  en: {
+    pill: "Warranty",
+    heading: "What Our Warranty Covers for You",
+    cards: [
+      { t: "Solar Panels", d: "Guaranteed to work cleanly for 12 years, plus a performance promise that your panels will keep producing solar power for 25 years." },
+      { t: "Inverters", d: "Free replacement for 5 years if anything goes wrong, with affordable options to extend your protection up to 10 years." },
+      { t: "Batteries (Lithium)", d: "Reliable backup power guaranteed for 5 to 10 years (or over 6,000 charge cycles)." },
+      { t: "Installation & Repairs", d: "2 full years of free home service and yearly checkups to ensure your system runs smoothly." },
+    ],
+    whyTitle: "Why Buy Through Us?",
+    whyLead: "We Handle the Hassle:",
+    whyBody: " If a part ever breaks down within its warranty, you don't need to chase factory suppliers. Just call us — we handle the replacement and fix it on-site for you.",
+  },
+  bn: {
+    pill: "ওয়ারেন্টি",
+    heading: "আমাদের ওয়ারেন্টি আপনার জন্য যা কভার করে",
+    cards: [
+      { t: "সোলার প্যানেল", d: "১২ বছর নিখুঁতভাবে কাজ করার গ্যারান্টি, সাথে ২৫ বছরের পারফরম্যান্স প্রতিশ্রুতি — আপনার প্যানেল বছরের পর বছর সৌরবিদ্যুৎ উৎপাদন করবে।" },
+      { t: "ইনভার্টার", d: "কোনো সমস্যা হলে ৫ বছর পর্যন্ত ফ্রি প্রতিস্থাপন, আর সাশ্রয়ী মূল্যে সুরক্ষা বাড়িয়ে ১০ বছর পর্যন্ত করার সুযোগ।" },
+      { t: "ব্যাটারি (লিথিয়াম)", d: "৫ থেকে ১০ বছর (বা ৬,০০০-এর বেশি চার্জ সাইকেল) পর্যন্ত নির্ভরযোগ্য ব্যাকআপ শক্তির গ্যারান্টি।" },
+      { t: "ইনস্টলেশন ও মেরামত", d: "২ বছর পর্যন্ত ফ্রি হোম সার্ভিস ও বার্ষিক চেকআপ — সিস্টেম যেন মসৃণভাবে চলে।" },
+    ],
+    whyTitle: "কেন আমাদের মাধ্যমে কিনবেন?",
+    whyLead: "ঝামেলা আমরাই সামলাই:",
+    whyBody: " ওয়ারেন্টির মধ্যে কোনো অংশ খারাপ হলে কারখানার সরবরাহকারীর পেছনে ছুটতে হবে না। শুধু আমাদের কল করুন — প্রতিস্থাপন আমরাই করি এবং আপনার জায়গায় বসিয়ে দিই।",
+  },
+};
+
+export const NET_METER_BAND: Bi<{ heading: string; quote: string; utilities: string[] }> = {
+  en: {
+    heading: "Earn from Excess Solar Power",
+    quote: "\"We handle the complete Net Metering approval process with your electricity provider so your unused power cuts down your night-time grid bill.\"",
+    utilities: ["DESCO", "DPDC", "BPDB", "BREB"],
+  },
+  bn: {
+    heading: "অতিরিক্ত সৌরবিদ্যুৎ থেকে আয় করুন",
+    quote: "\"আপনার বিদ্যুৎ বিতরণ কর্তৃপক্ষের সাথে নেট মিটারিং অনুমোদনের সম্পূর্ণ প্রক্রিয়া আমরাই সামলাই — ফলে অব্যবহৃত বিদ্যুৎ আপনার রাতের গ্রিড বিল কমিয়ে দেয়।\"",
+    utilities: ["DESCO", "DPDC", "BPDB", "BREB"],
+  },
+};
+
+export const HOME_FEATURES: Bi<{ heading: string; items: { t: string; d: string }[] }> = {
+  en: {
+    heading: "Why homeowners choose Green Dhaka",
+    items: [
+      { t: "Premium panels", d: "Tier-1 high-efficiency mono PERC modules built for Bangladesh's heat and monsoon." },
+      { t: "Easy EMI & net metering", d: "We handle government net-metering paperwork and offer 20% down EMI." },
+      { t: "Expert installation", d: "In-house engineers install your system in as little as 7 days." },
+      { t: "25-year warranty", d: "Long-term performance warranty plus free annual maintenance." },
+      { t: "Live monitoring app", d: "Track generation and savings in real time from your phone." },
+    ],
+  },
+  bn: {
+    heading: "বাসার মালিকরা কেন গ্রিন ঢাকা বেছে নেন",
+    items: [
+      { t: "প্রিমিয়াম প্যানেল", d: "বাংলাদেশের তাপ ও বর্ষা সামলাতে তৈরি টিয়ার-১ উচ্চ-দক্ষতার মনো PERC মডিউল।" },
+      { t: "সহজ EMI ও নেট মিটারিং", d: "সরকারি নেট-মিটারিং কাগজপত্র আমরাই সামলাই এবং ২০% ডাউন EMI দিই।" },
+      { t: "দক্ষ ইনস্টলেশন", d: "আমাদের নিজস্ব প্রকৌশলীরা মাত্র ৭ দিনে সিস্টেম ইনস্টল করেন।" },
+      { t: "২৫ বছরের ওয়ারেন্টি", d: "দীর্ঘমেয়াদি পারফরম্যান্স ওয়ারেন্টি এবং ফ্রি বার্ষিক রক্ষণাবেক্ষণ।" },
+      { t: "লাইভ মনিটরিং অ্যাপ", d: "ফোন থেকেই রিয়েল-টাইমে উৎপাদন ও সাশ্রয় দেখুন।" },
+    ],
+  },
+};
+
+export const HOME_STEPS: Bi<{ heading: string; steps: string[] }> = {
+  en: {
+    heading: "Going solar in 5 simple steps",
+    steps: ["Free site survey", "Custom system design", "Installation in 7 days", "Net-metering setup", "Lifetime support"],
+  },
+  bn: {
+    heading: "৫টি সহজ ধাপে সোলারে যান",
+    steps: ["ফ্রি সাইট সার্ভে", "কাস্টম সিস্টেম ডিজাইন", "৭ দিনে ইনস্টলেশন", "নেট-মিটারিং সেটআপ", "লাইফটাইম সাপোর্ট"],
+  },
+};
+
+export const HOME_REVIEWS: Bi<{ heading: string; reviews: { n: string; q: string }[] }> = {
+  en: {
+    heading: "Loved by 20,000+ families",
+    reviews: [
+      { n: "Rahim U., Dhaka", q: "Our bill went from ৳8,000 to under ৳900. Installation was spotless and on time." },
+      { n: "Nusrat H., Chattogram", q: "They took care of everything including the net-metering application. The app is genuinely useful." },
+      { n: "Tanvir K., Sylhet", q: "Professional team from survey to commissioning. Highly recommend." },
+    ],
+  },
+  bn: {
+    heading: "২০,০০০+ পরিবারের ভালোবাসা",
+    reviews: [
+      { n: "রহিম উ., ঢাকা", q: "আমাদের বিল ৳8,000 থেকে ৳900-এর নিচে নেমে এসেছে। ইনস্টলেশন ছিল নিখুঁত ও সময়মতো।" },
+      { n: "নুসরাত হ., চট্টগ্রাম", q: "নেট-মিটারিং আবেদনসহ সবকিছু তারা নিজেরাই সামলেছে। অ্যাপটি সত্যিই কাজের।" },
+      { n: "তানভীর ক., সিলেট", q: "সার্ভে থেকে চালু পর্যন্ত পেশাদার টিম। আমি সবাইকে সুপারিশ করি।" },
+    ],
+  },
+};
+
+export const HOME_COVERAGE: Bi<{ label: string; tabs: { label: string; title: string; sub: string }[] }> = {
+  en: {
+    label: "Project scale",
+    tabs: [
+      { label: "Homes", title: "Home rooftops from 3\u00a0kW", sub: "Net metering handled with DESCO, DPDC, NESCO or your local PBS." },
+      { label: "Housing societies", title: "Society rooftops around 50\u00a0kW", sub: "Powering lifts, water pumps and common-area lighting." },
+      { label: "Commercial & industrial", title: "Rooftop plants of 50\u00a0kW – 1\u00a0MW+", sub: "For factories, RMG units and warehouses." },
+      { label: "Ground-mounted", title: "Solar plants of 1–50+\u00a0MW", sub: "Built on non-agricultural land." },
+    ],
+  },
+  bn: {
+    label: "প্রকল্পের আকার",
+    tabs: [
+      { label: "বাসাবাড়ি", title: "৩ কিলোওয়াট থেকে বাসার ছাদের সোলার", sub: "DESCO, DPDC, NESCO বা স্থানীয় PBS-এর সাথে নেট মিটারিং আমরাই সামলাই।" },
+      { label: "হাউজিং সোসাইটি", title: "প্রায় ৫০ কিলোওয়াটের সোসাইটি ছাদ", sub: "লিফট, পানির পাম্প ও কমন এরিয়ার আলো চালায়।" },
+      { label: "বাণিজ্যিক ও শিল্প", title: "৫০ কিলোওয়াট – ১ মেগাওয়াট+ ছাদের প্ল্যান্ট", sub: "কারখানা, RMG ইউনিট ও গুদামের জন্য।" },
+      { label: "গ্রাউন্ড-মাউন্টেড", title: "১–৫০+ মেগাওয়াটের সোলার প্ল্যান্ট", sub: "অকৃষি জমিতে নির্মিত।" },
+    ],
+  },
 };

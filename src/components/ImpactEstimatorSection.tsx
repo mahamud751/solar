@@ -70,7 +70,7 @@ export function ImpactEstimatorSection() {
                 <div className="rounded-3xl border border-border bg-card p-5 shadow-card">
                   <Banknote className="h-5 w-5 text-success" aria-hidden="true" />
                   <p className="mt-3 font-mono text-2xl font-extrabold text-ink-deep">
-                    {t("0% down", "০% ডাউন", "impact-estimator-section/0-down")}
+                    {t("20% down", "২০% ডাউন", "impact-estimator-section/0-down")}
                   </p>
                   <p className="mt-1 text-xs font-medium text-muted-foreground">
                     {t("Easy EMI — your savings help pay the instalment", "সহজ EMI — আপনার সাশ্রয়েই কিস্তি পরিশোধে সহায়তা", "impact-estimator-section/easy-emi-your-savings-help-pay-the")}
@@ -161,13 +161,13 @@ export function ImpactEstimatorSection() {
                   </div>
 
                   <div className="rounded-2xl bg-gold-soft p-4">
-                    <p className="text-xs font-semibold text-[#9A5D06]">
+                    <p className="text-xs font-semibold text-primary-deep">
                       {t("25-Year Net Profit", "২৫ বছরের নিট লাভ", "impact-estimator-section/25-year-net-profit")}
                     </p>
                     <p className="mt-1 font-mono text-2xl font-extrabold text-ink-deep tabular-nums">
                       {formatBDT(lifetimeSavings)}
                     </p>
-                    <p className="mt-0.5 text-[0.72rem] text-[#9A5D06]">
+                    <p className="mt-0.5 text-[0.72rem] text-primary-deep">
                       {t("Payback", "বিনিয়োগ-উদ্ধার", "impact-estimator-section/payback")} ~{paybackYears} {t("yrs", "বছর", "impact-estimator-section/yrs")} · {co2Tonnes25Yr}t CO₂
                     </p>
                   </div>
@@ -201,7 +201,7 @@ export function ImpactEstimatorSection() {
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -bottom-24 left-10 h-64 w-64 rounded-full bg-[#F6C44C]/20 blur-3xl"
+              className="pointer-events-none absolute -bottom-24 left-10 h-64 w-64 rounded-full bg-primary/20 blur-3xl"
             />
 
             <div className="relative flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
@@ -226,7 +226,7 @@ export function ImpactEstimatorSection() {
                   href={COMPANY_INFO.phoneHref}
                   className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3.5 font-mono text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/20 sm:text-base"
                 >
-                  <PhoneCall className="h-4 w-4 text-[#F6C44C]" aria-hidden="true" />
+                  <PhoneCall className="h-4 w-4 text-primary" aria-hidden="true" />
                   <span>{COMPANY_INFO.phone}</span>
                 </a>
               </div>

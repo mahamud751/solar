@@ -74,7 +74,7 @@ export default async function ServiceDetailPage({
                 <span className="rounded-full bg-primary-soft px-3 py-1 text-xs font-bold text-primary-deep">
                   <T en={svc.category} bn={CATEGORY_BN[svc.category]} />
                 </span>
-                <span className="rounded-full bg-gold-soft px-3 py-1 font-mono text-xs font-bold text-[#9A5D06]">
+                <span className="rounded-full bg-gold-soft px-3 py-1 font-mono text-xs font-bold text-primary-deep">
                   <T en={`${svc.highlightMetric} · ${svc.highlightLabel}`} bn={`${bn.highlightMetric} · ${bn.highlightLabel}`} />
                 </span>
               </div>

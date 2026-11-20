@@ -93,7 +93,7 @@ export function ServicesSection() {
                 <span className="absolute top-3 left-3 rounded-full bg-white/92 px-2.5 py-1 text-[0.68rem] font-bold text-primary-deep shadow-sm backdrop-blur-sm">
                   {t(svc.category, CATEGORY_BN[svc.category] ?? svc.category)}
                 </span>
-                <span className="absolute bottom-3 left-3 font-mono text-xs font-extrabold text-[#F6C44C]">
+                <span className="absolute bottom-3 left-3 font-mono text-xs font-extrabold text-primary">
                   {svc.highlightMetric}
                 </span>
               </div>

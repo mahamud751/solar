@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Check, X, Lightbulb } from "lucide-react";
-import { LeadForm } from "./SiteChrome";
+import { QuoteForm } from "@/components/QuoteForm";
 import { useLang, type Bi } from "@/i18n/lang";
 
 import { useContent } from "@/data/content";
@@ -11,7 +11,7 @@ import type { Guide } from "@/data/page-content";
 
 
 
-export function GuidePage({ g }: { g: Bi<Guide> }) {
+export function GuidePage({ g, formTitle }: { g: Bi<Guide>; formTitle: Bi<string> }) {
   const { lang } = useLang();
   const { BLOCKS } = useContent();
   const guide = g[lang];
@@ -29,7 +29,13 @@ export function GuidePage({ g }: { g: Bi<Guide> }) {
               {c.chips.map((chip) => <span key={chip}>{chip}</span>)}
             </div>
           </div>
-          <LeadForm />
+          <QuoteForm
+            compact
+            title={formTitle.en}
+            titleBn={formTitle.bn}
+            subtitle="Receive an itemised quote, generation estimate and financing options within 24 hours."
+            subtitleBn="২৪ ঘণ্টার মধ্যে বিস্তারিত কোটেশন, উৎপাদনের হিসাব ও অর্থায়নের বিকল্প পান।"
+          />
         </div>
       </section>
 

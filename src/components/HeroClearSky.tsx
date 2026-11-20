@@ -87,15 +87,19 @@ export function HeroClearSky() {
 
   return (
     <>
-      <section ref={stage} className="solar-walkout" aria-label="Green Dhaka rooftop solar">
+      <section ref={stage} className="solar-walkout" aria-label={t("Green Dhaka rooftop solar", "গ্রিন ঢাকা ছাদের সোলার", "hero-clear-sky/green-dhaka-rooftop-solar")}>
         <div className="solar-stage">
           <div aria-hidden="true" className="solar-scene" style={{ backgroundImage: `url("${PAGE_IMAGES.homeHeroImage}")` }} />
           <div aria-hidden="true" className="solar-wash" />
           <div ref={intro} className="solar-intro">
-            <h1>{t("Solar plants for factories, businesses and homes", "কারখানা, ব্যবসা ও বাসার জন্য সোলার প্ল্যান্ট", "hero-clear-sky/solar-plants-for-factories-businesses-and-homes")}<span>{t("Designed, built and maintained by Green Dhaka", "ডিজাইন, নির্মাণ ও রক্ষণাবেক্ষণ — গ্রিন ঢাকা", "hero-clear-sky/designed-built-and-maintained-by-green-dhaka")}</span></h1>
-            <p>{t("Explore rooftop solar, compare installation quotes and estimate how much power your roof could produce.", "ছাদের সোলার সম্পর্কে জানুন, ইনস্টলেশন কোটেশন তুলনা করুন এবং আপনার ছাদ কত বিদ্যুৎ উৎপাদন করতে পারে তা হিসাব করুন।", "hero-clear-sky/explore-rooftop-solar-compare-installation-quotes-and")}</p>
+            <h1>{t("Solar that ", "সোলার, যা ", "hero-clear-sky/solar-that")}<span>{t("delivers on its promise.", "প্রতিশ্রুতি রাখে।", "hero-clear-sky/delivers-on-its-promise")}</span></h1>
+            <p>{t("Guaranteed savings. End-to-end care. Complete peace of mind — we handle everything from installation to net metering, with 25 years of support.", "নিশ্চিত সাশ্রয়। সম্পূর্ণ যত্ন। পূর্ণ শান্তি — ইনস্টলেশন থেকে নেট মিটারিং পর্যন্ত সবকিছু আমরাই সামলাই, ২৫ বছরের সাপোর্টসহ।", "hero-clear-sky/guaranteed-savings-end-to-end-care")}</p>
             <Link className="inline-flex rounded-full bg-brand-gradient px-7 py-3 font-bold text-primary-foreground shadow-glow" href="/contact#quote">{t("Get a free quote", "ফ্রি কোটেশন নিন", "hero-clear-sky/get-a-free-quote")}</Link>
-            <p className="font-semibold">{t("150 MW installed · 20,000+ homes powered", "১৫০ মেগাওয়াট ইনস্টল · ২০,০০০+ বাসায় বিদ্যুৎ", "hero-clear-sky/150-mw-installed-20-000-homes-powered")}</p>
+            <dl className="solar-stats">
+              <div><dt>{t("Bill Savings", "বিল সাশ্রয়", "hero-clear-sky/stat-bill-savings")}</dt><dd>{t("Up to 80%", "৮০% পর্যন্ত", "hero-clear-sky/stat-up-to-80")}</dd></div>
+              <div><dt>{t("Certified Tech", "সার্টিফায়েড প্রযুক্তি", "hero-clear-sky/stat-certified-tech")}</dt><dd>{t("Tier-1", "টিয়ার-১", "hero-clear-sky/stat-tier-1")}</dd></div>
+              <div><dt>{t("Full Support", "পূর্ণ সাপোর্ট", "hero-clear-sky/stat-full-support")}</dt><dd>{t("25 Years", "২৫ বছর", "hero-clear-sky/stat-25-years")}</dd></div>
+            </dl>
           </div>
         </div>
       </section>
@@ -136,7 +140,7 @@ export function HeroClearSky() {
                     </p>
                     <p className="mt-0.5 flex items-baseline gap-1.5 font-mono text-3xl font-extrabold text-white tabular-nums sm:text-4xl">
                       {liveOutputKw.toFixed(1)}
-                      <span className="text-base font-bold text-[#F6C44C]">
+                      <span className="text-base font-bold text-primary">
                         kW
                       </span>
                     </p>
@@ -145,7 +149,7 @@ export function HeroClearSky() {
                     <p className="text-[0.68rem] font-semibold text-slate-200">
                       {t("Est. Monthly Savings", "আনুমানিক মাসিক সাশ্রয়", "hero-clear-sky/est-monthly-savings")}
                     </p>
-                    <p className="font-mono text-lg font-extrabold text-[#F6C44C] tabular-nums">
+                    <p className="font-mono text-lg font-extrabold text-primary tabular-nums">
                       {formatBDT(monthlySavings)}
                     </p>
                   </div>
@@ -215,7 +219,7 @@ export function HeroClearSky() {
                       y1={curve.activeY}
                       x2={curve.activeX}
                       y2={curve.height}
-                      stroke="#E08A1A"
+                      stroke="#2bb3a3"
                       strokeWidth="1.5"
                       strokeDasharray="3 3"
                     />
@@ -223,7 +227,7 @@ export function HeroClearSky() {
                       cx={curve.activeX}
                       cy={curve.activeY}
                       r="5.5"
-                      fill="#F6C44C"
+                      fill="#79e475"
                       stroke="#1d7635"
                       strokeWidth="2"
                     />

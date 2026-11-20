@@ -19,7 +19,7 @@ export function TestimonialsSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-soft px-3.5 py-1 text-xs font-bold text-[#9A5D06]">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-soft px-3.5 py-1 text-xs font-bold text-primary-deep">
               <Star className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
               {tx("4.8 / 5 Customer Rating", "৪.৮ / ৫ গ্রাহক রেটিং")}
             </span>
@@ -86,7 +86,7 @@ export function TestimonialsSection() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-0.5 text-[#E08A1A]">
+                    <div className="flex items-center gap-0.5 text-primary">
                       {Array.from({ length: 5 }).map((_, s) => (
                         <Star
                           key={s}

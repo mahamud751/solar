@@ -73,11 +73,10 @@ export const COMPANY_INFO = {
   name: "Green Dhaka",
   legalName: "Green Dhaka",
   tagline: "Rooftop Solar for Homes & Businesses in Bangladesh",
-  // TODO: replace placeholder contact details with the real ones (same as greendhaka-main)
-  phone: "09600-000000",
-  phoneHref: "tel:+8809600000000",
-  email: "info@greendhaka.com",
-  emailHref: "mailto:info@greendhaka.com",
+  phone: "01976-000908",
+  phoneHref: "tel:+8801976000908",
+  email: "mygreendhaka@gmail.com",
+  emailHref: "mailto:mygreendhaka@gmail.com",
   address: "Dhaka, Bangladesh",
   addressBn: "ঢাকা, বাংলাদেশ",
   hoursWeekday: "Sat – Thu: 9:30 AM – 6:30 PM",
@@ -92,7 +91,7 @@ export const COMPANY_INFO = {
     instagram: "",
     linkedin: "",
     youtube: "",
-    facebook: "",
+    facebook: "https://www.facebook.com/mygreendhaka",
   },
 };
 
@@ -111,7 +110,7 @@ export const SERVICES: SolarService[] = [
     category: "Installations",
     tagline: "Rooftop solar for homes — cut your electricity bill by up to 90%.",
     description:
-      "Turn your rooftop into a clean 25-year power plant. Green Dhaka surveys your roof, designs the system, installs it with in-house engineers and handles SREDA net-metering approval with DESCO, DPDC, NESCO or your local PBS — with 0% down EMI available.",
+      "Turn your rooftop into a clean 25-year power plant. Green Dhaka surveys your roof, designs the system, installs it with in-house engineers and handles SREDA net-metering approval with DESCO, DPDC, NESCO or your local PBS — with 20% down EMI available.",
     highlightMetric: "Up to 90%",
     highlightLabel: "Lower electricity bills",
     image: "/images/residential-solar.jpg",
@@ -263,10 +262,10 @@ export const SERVICES: SolarService[] = [
     title: "Solar Loan",
     shortTitle: "Solar Loan",
     category: "Financing",
-    tagline: "Easy solar financing — 0% down with monthly EMIs.",
+    tagline: "Easy solar financing — 20% down with monthly EMIs.",
     description:
-      "Own your solar system from day one without draining your savings. Green Dhaka offers 0% down EMI for homes and connects businesses with partner banks for green financing, so your monthly bill savings help cover the instalment.",
-    highlightMetric: "0% Down",
+      "Own your solar system from day one without draining your savings. Green Dhaka offers 20% down EMI for homes and connects businesses with partner banks for green financing, so your monthly bill savings help cover the instalment.",
+    highlightMetric: "20% Down",
     highlightLabel: "Easy EMI plans",
     image: "/images/residential-solar.jpg",
     idealFor: [
@@ -275,7 +274,7 @@ export const SERVICES: SolarService[] = [
       "Commercial buildings replacing high grid bills with fixed EMIs",
     ],
     benefits: [
-      "0% down-payment EMI options for residential systems",
+      "20% down-payment EMI options for residential systems",
       "Simple documentation with help from our team",
       "Monthly bill savings often cover most of the EMI",
       "Full ownership of the system and 25 years of savings",
@@ -515,6 +514,57 @@ export const SERVICES: SolarService[] = [
       },
     ],
   },
+  {
+    slug: "housing-society-solar",
+    title: "Housing Society Solar",
+    shortTitle: "Housing Society",
+    category: "Installations",
+    tagline: "Rooftop solar for housing societies — cut common-area bills by up to 90%.",
+    description:
+      "Power your society's lifts, water pumps, parking and staircase lighting from its own rooftop. Green Dhaka surveys the building, prepares an AGM-ready proposal with savings and payback, installs with in-house engineers and handles SREDA net-metering approval with DESCO, DPDC, NESCO or REB.",
+    highlightMetric: "Up to 90%",
+    highlightLabel: "Lower common-area bills",
+    image: "/images/gd/offer-society.jpg",
+    idealFor: [
+      "Apartment owners' associations",
+      "Housing societies & gated communities",
+      "Multi-storey residential buildings with shared roofs",
+    ],
+    benefits: [
+      "Cut lift, pump and common-lighting bills by 70–90% with net metering",
+      "Surplus units exported and credited by your utility under SREDA policy",
+      "Reserve fund, per-flat contribution or bank EMI — including 20% down plans",
+      "25-year performance warranty with ongoing maintenance support",
+    ],
+    deliverables: [
+      "Roof survey, structural check and generation estimate",
+      "AGM-ready proposal with savings, payback and financing options",
+      "Tier-1 modules, smart inverter and storm-tested mounting structure",
+      "Complete net-metering documentation with your utility",
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Free Society Visit",
+        detail: "Our society desk surveys the roof and reviews the common-area electricity bills.",
+      },
+      {
+        step: "02",
+        title: "Committee Proposal",
+        detail: "Get a savings, payback and financing proposal your committee can present at the AGM.",
+      },
+      {
+        step: "03",
+        title: "Installation",
+        detail: "In-house crew installs, wires and tests the system with minimal disruption to residents.",
+      },
+      {
+        step: "04",
+        title: "Net Metering & Tracking",
+        detail: "Your utility fits the bi-directional meter; the society tracks generation and savings live.",
+      },
+    ],
+  },
 ];
 
 export const APP_STEPS = [
@@ -701,7 +751,7 @@ export const FAQS: FaqItem[] = [
     id: "why-choose-green-dhaka",
     question: "Why choose Green Dhaka?",
     answer:
-      "We offer a Savings Guarantee with a money-back promise, BUET-approved GreenPro Mount™ structures tested for 170 km/h storms, Tier-1 LONGi and Trina panels, net-metering paperwork handled for you, 0% down EMI and proactive maintenance visits — all without middlemen.",
+      "We offer a Savings Guarantee with a money-back promise, BUET-approved GreenPro Mount™ structures tested for 170 km/h storms, Tier-1 LONGi and Trina panels, net-metering paperwork handled for you, 20% down EMI and proactive maintenance visits — all without middlemen.",
   },
   {
     id: "how-does-solar-work",

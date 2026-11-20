@@ -62,7 +62,7 @@ export const CITY_PAGE = {
       ]
     ],
     "bullets": [
-      "0% down-payment EMI options",
+      "20% down-payment EMI options",
       "Tier-1 LONGi & Trina panels",
       "25 years of after-sales care"
     ],
@@ -143,7 +143,7 @@ export const CITY_PAGE = {
       ]
     ],
     "bullets": [
-      "০% ডাউন-পেমেন্ট EMI",
+      "২০% ডাউন-পেমেন্ট EMI",
       "টিয়ার-১ LONGi ও Trina প্যানেল",
       "২৫ বছরের বিক্রয়োত্তর সেবা"
     ],

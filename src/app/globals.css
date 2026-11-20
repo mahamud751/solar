@@ -26,8 +26,8 @@
   --muted: oklch(0.96 0.012 190);
   --destructive: oklch(0.577 0.245 27.325);
   --ring: oklch(0.7 0.11 187);
-  --gold: oklch(72% 0.145 58);
-  --gold-soft: oklch(96.8% 0.032 78);
+  --gold: oklch(0.5 0.13 148); /* matches Lovable: accents use brand green */
+  --gold-soft: oklch(0.955 0.045 150);
   --success: oklch(56.1% 0.134 154.9);
   --success-soft: oklch(96.5% 0.017 162.8);
   --muted-foreground: oklch(0.48 0.045 230);
@@ -36,7 +36,7 @@
 
   --gradient-brand: linear-gradient(135deg, var(--primary), var(--teal));
   --gradient-hero: linear-gradient(150deg, oklch(0.42 0.09 205) 0%, oklch(0.32 0.08 235) 50%, oklch(0.24 0.065 244) 100%);
-  --gradient-gold: linear-gradient(135deg, #f6c44c 0%, #e08a1a 100%);
+  --gradient-gold: linear-gradient(135deg, var(--primary), var(--teal));
   --gradient-hero-paper: radial-gradient(
       115% 75% at 86% 14%,
       oklch(0.93 0.05 187 / 0.72) 0%,
@@ -92,8 +92,8 @@
     "Segoe UI", Roboto, sans-serif;
   --font-display: var(--font-sora), var(--font-manrope), ui-sans-serif, system-ui,
     sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo,
-    monospace;
+  --font-mono: var(--font-sora), var(--font-manrope), ui-sans-serif, system-ui,
+    sans-serif;
 }
 
 @layer base {
@@ -616,20 +616,27 @@ body {
 .solar-stage { height: 100svh; position: sticky; top: 0; overflow: hidden; display: grid; align-items: center; }
 .solar-scene, .solar-wash { position: absolute; inset: 0; }
 .solar-scene {
-  background: #9abfd0 url('/images/residential-solar.jpg') center / cover;
+  background: var(--secondary) url('/images/gd/hero-solar.jpg') center / cover;
   transform: translate(calc(4% * (1 - var(--exit))), calc(1% * (1 - var(--exit)))) scale(calc(1.08 - .08 * var(--exit)));
 }
-.solar-wash { background: linear-gradient(90deg, #faf9f4 3%, #faf9f4ed 28%, #faf9f49c 47%, transparent 72%); opacity: calc(1 - var(--exit)); }
+.solar-wash { background: color-mix(in oklab, var(--secondary) 70%, transparent); opacity: calc(1 - .5 * var(--exit)); }
 .solar-intro {
-  position: relative; margin-inline: max(5vw, calc((100vw - 88rem) / 2)); max-width: 32rem;
+  position: relative; margin-inline: max(5vw, calc((100vw - 88rem) / 2)); max-width: 36rem;
   opacity: calc(1 - var(--exit)); transform: translateY(calc(-32px * var(--exit))) scale(calc(1 - .04 * var(--exit)));
-  filter: blur(calc(8px * var(--exit))); color: var(--secondary);
+  filter: blur(calc(8px * var(--exit))); color: var(--secondary-foreground);
 }
-.solar-intro h1 { font: 500 clamp(2.2rem, 4vw, 3.6rem)/1.03 Georgia, serif; letter-spacing: -.035em; }
-.solar-intro h1 span { display: block; margin-top: .75rem; color: var(--primary-deep); font-size: .48em; letter-spacing: 0; }
-.solar-intro p { margin: 1.3rem 0; max-width: 26rem; line-height: 1.6; }
+.solar-intro h1 { font: 800 clamp(2.25rem, 4.6vw, 3.75rem)/1.08 var(--font-display); letter-spacing: -.02em; }
+.solar-intro h1 span { color: var(--primary); }
+.solar-intro p { margin: 1.3rem 0; max-width: 28rem; font-size: 1.125rem; line-height: 1.6; opacity: .9; }
+.solar-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; max-width: 28rem; }
+.solar-stats div { display: flex; flex-direction: column-reverse; }
+.solar-stats dd { font: 700 1.5rem/1.1 var(--font-display); white-space: nowrap; }
+.solar-stats dt { margin-top: .25rem; font-size: .875rem; opacity: .8; }
 @media (max-width: 700px) {
-  .solar-wash { background: linear-gradient(90deg, #faf9f4f5, #faf9f4d9 70%, #faf9f488); }
+  .solar-wash { background: color-mix(in oklab, var(--secondary) 78%, transparent); }
+}
+@media (max-width: 480px) {
+  .solar-stats dd { font-size: 1.15rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .solar-walkout { height: auto; }
@@ -679,7 +686,7 @@ body {
 
 /* ---- Animated gradient headline text ---- */
 .text-gradient {
-  background: linear-gradient(90deg, oklch(0.5 0.13 148), oklch(0.55 0.1 190) 30%, #e08a1a 55%, oklch(0.5 0.13 148) 80%);
+  background: linear-gradient(90deg, oklch(0.5 0.13 148), oklch(0.55 0.1 190) 30%, oklch(0.7 0.11 187) 55%, oklch(0.5 0.13 148) 80%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -741,7 +748,7 @@ body {
   inset-inline: 0;
   z-index: 60;
   block-size: 3px;
-  background: linear-gradient(90deg, #f6c44c, var(--primary), var(--teal));
+  background: linear-gradient(90deg, var(--primary), var(--teal));
   transform-origin: 0 50%;
   scale: 0 1;
   pointer-events: none;
@@ -1012,3 +1019,13 @@ a.shadow-card:hover .icon-pop {
   }
 }
 }
+
+/* Homepage coverage section */
+@keyframes coverage-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes coverage-progress { from { width: 0; } to { width: 100%; } }
+.coverage-in { animation: coverage-in .6s cubic-bezier(.2,.7,.2,1) both; }
+.coverage-progress { animation-name: coverage-progress; animation-timing-function: linear; animation-fill-mode: both; }
+@media (prefers-reduced-motion: reduce) {
+  .coverage-in { animation: none; }
+}
+

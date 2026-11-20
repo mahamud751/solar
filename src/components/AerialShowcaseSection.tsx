@@ -90,7 +90,7 @@ export function AerialShowcaseSection() {
 
             {/* Top Left Metric Badge */}
             <div className="absolute top-5 left-5">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-secondary/75 px-3.5 py-1.5 font-mono text-xs font-bold text-[#F6C44C] backdrop-blur-md">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-secondary/75 px-3.5 py-1.5 font-mono text-xs font-bold text-primary backdrop-blur-md">
                 {current.metric}
               </span>
             </div>

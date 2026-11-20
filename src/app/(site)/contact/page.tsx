@@ -125,7 +125,7 @@ export default async function ContactPage() {
               </div>
 
               <div className="rise rise-6 card-lift flex items-start gap-3.5 rounded-2xl border border-border bg-card p-5 shadow-card">
-                <span className="icon-pop flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gold-soft text-[#9A5D06]">
+                <span className="icon-pop flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gold-soft text-primary-deep">
                   <Clock className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <div>

@@ -409,8 +409,8 @@
       "bn": "সোলার লোন"
     },
     "0-down-emi": {
-      "en": "0% down EMI",
-      "bn": "০% ডাউন EMI"
+      "en": "20% down EMI",
+      "bn": "২০% ডাউন EMI"
     },
     "active-bookings": {
       "en": "Active Bookings",
@@ -671,6 +671,50 @@
     "up-to-90-bill-reduction-from-month": {
       "en": "Up to 90% bill reduction from Month 1",
       "bn": "প্রথম মাস থেকেই বিল ৯০% পর্যন্ত কম"
+    },
+    "solar-that": {
+      "en": "Solar that ",
+      "bn": "সোলার, যা "
+    },
+    "delivers-on-its-promise": {
+      "en": "delivers on its promise.",
+      "bn": "প্রতিশ্রুতি রাখে।"
+    },
+    "guaranteed-savings-end-to-end-care": {
+      "en": "Guaranteed savings. End-to-end care. Complete peace of mind — we handle everything from installation to net metering, with 25 years of support.",
+      "bn": "নিশ্চিত সাশ্রয়। সম্পূর্ণ যত্ন। পূর্ণ শান্তি — ইনস্টলেশন থেকে নেট মিটারিং পর্যন্ত সবকিছু আমরাই সামলাই, ২৫ বছরের সাপোর্টসহ।"
+    },
+    "stat-up-to-80": {
+      "en": "Up to 80%",
+      "bn": "৮০% পর্যন্ত"
+    },
+    "stat-bill-savings": {
+      "en": "Bill Savings",
+      "bn": "বিল সাশ্রয়"
+    },
+    "stat-tier-1": {
+      "en": "Tier-1",
+      "bn": "টিয়ার-১"
+    },
+    "stat-certified-tech": {
+      "en": "Certified Tech",
+      "bn": "সার্টিফায়েড প্রযুক্তি"
+    },
+    "stat-25-years": {
+      "en": "25 Years",
+      "bn": "২৫ বছর"
+    },
+    "stat-full-support": {
+      "en": "Full Support",
+      "bn": "পূর্ণ সাপোর্ট"
+    },
+    "a-greener-future-for-every-home": {
+      "en": "A greener future for every home",
+      "bn": "প্রতিটি বাসার জন্য একটি সবুজ ভবিষ্যৎ"
+    },
+    "green-dhaka-rooftop-solar": {
+      "en": "Green Dhaka rooftop solar",
+      "bn": "গ্রিন ঢাকা ছাদের সোলার"
     }
   },
   "impact-estimator-section": {
@@ -695,8 +739,8 @@
       "bn": "কম মাসিক বিদ্যুৎ বিল"
     },
     "0-down": {
-      "en": "0% down",
-      "bn": "০% ডাউন"
+      "en": "20% down",
+      "bn": "২০% ডাউন"
     },
     "easy-emi-your-savings-help-pay-the": {
       "en": "Easy EMI — your savings help pay the instalment",
@@ -941,8 +985,8 @@
       "bn": "সোলার লোন EMI তুলনা করুন"
     },
     "0-down-5-year-tenure": {
-      "en": "0% down · 5-year tenure",
-      "bn": "০% ডাউন · ৫ বছর মেয়াদ"
+      "en": "20% down · 5-year tenure",
+      "bn": "২০% ডাউন · ৫ বছর মেয়াদ"
     },
     "p-a-indicative": {
       "en": "p.a., indicative",
@@ -1005,8 +1049,8 @@
       "bn": "আপনার বিনিয়োগ"
     },
     "0-down-emi-available": {
-      "en": "0% down EMI available",
-      "bn": "০% ডাউন EMI সুবিধা আছে"
+      "en": "20% down EMI available",
+      "bn": "২০% ডাউন EMI সুবিধা আছে"
     },
     "25-year-cumulative-net-financial-return": {
       "en": "25-Year Cumulative Net Financial Return",
@@ -1075,6 +1119,10 @@
     "of-the-emi": {
       "en": "of the EMI",
       "bn": "পূরণ হয়"
+    },
+    "20-down": {
+      "en": "20% down",
+      "bn": "২০% ডাউন"
     }
   }
 }

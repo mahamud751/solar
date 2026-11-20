@@ -35,6 +35,7 @@ const ICON = "h-4 w-4 text-primary-deep";
 
 const SERVICE_ICONS: Record<string, React.ReactNode> = {
   "residential-solar": <Sun className={ICON} aria-hidden="true" />,
+  "housing-society-solar": <Building2 className={ICON} aria-hidden="true" />,
   "industrial-solar": <Factory className={ICON} aria-hidden="true" />,
   ppa: <FileCheck2 className={ICON} aria-hidden="true" />,
   "solar-loan": <Landmark className={ICON} aria-hidden="true" />,
@@ -45,9 +46,9 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
 };
 
 const GD_ICONS: Record<string, React.ReactNode> = {
-  "/homes": <HomeIcon className={ICON} aria-hidden="true" />,
-  "/housing-society": <Building2 className={ICON} aria-hidden="true" />,
-  "/commercial": <Store className={ICON} aria-hidden="true" />,
+  "/service/residential-solar": <HomeIcon className={ICON} aria-hidden="true" />,
+  "/service/housing-society-solar": <Building2 className={ICON} aria-hidden="true" />,
+  "/service/industrial-solar": <Store className={ICON} aria-hidden="true" />,
   "/on-grid-solar-system": <PlugZap className={ICON} aria-hidden="true" />,
   "/off-grid-solar-system": <BatteryCharging className={ICON} aria-hidden="true" />,
 };

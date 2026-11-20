@@ -11,17 +11,17 @@ export const offeringsNav: Bi<{ label: string; items: [string, string][] }> = {
   en: {
     label: "Our Offerings",
     items: [
-      ["Solar for Homes", "/homes"],
-      ["Solar for Housing Societies", "/housing-society"],
-      ["Solar for Commercial", "/commercial"],
+      ["Solar for Homes", "/service/residential-solar"],
+      ["Solar for Housing Societies", "/service/housing-society-solar"],
+      ["Solar for Commercial", "/service/industrial-solar"],
     ],
   },
   bn: {
     label: "আমাদের সেবাসমূহ",
     items: [
-      ["বাসাবাড়ির জন্য সোলার", "/homes"],
-      ["হাউজিং সোসাইটির জন্য সোলার", "/housing-society"],
-      ["বাণিজ্যিক প্রতিষ্ঠানের জন্য সোলার", "/commercial"],
+      ["বাসাবাড়ির জন্য সোলার", "/service/residential-solar"],
+      ["হাউজিং সোসাইটির জন্য সোলার", "/service/housing-society-solar"],
+      ["বাণিজ্যিক প্রতিষ্ঠানের জন্য সোলার", "/service/industrial-solar"],
     ],
   },
 };

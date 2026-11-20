@@ -22,6 +22,8 @@ import { useContent } from "@/data/content";
 
 type Segment = "residential" | "commercial" | "industrial";
 const segmentIcons = { residential: Home, commercial: Building2, industrial: Factory };
+/** Share of the system cost paid upfront; the rest is financed through EMI. */
+const DOWN_PAYMENT_SHARE = 0.2;
 
 export function SolarCalculatorClient({ initialBill }: { initialBill?: number }) {
   const { DISCOMS, PANEL_BRANDS } = useContent();
@@ -88,8 +90,9 @@ function CalculatorForm({ initialBill }: { initialBill?: number }) {
     }
     const lifetimeNetProfit = yearlyPoints[24].net;
 
-    // EMI estimate (0% down, ~9% residential / ~10% C&I over 60 months)
-    const principal = netEffectiveCost;
+    // EMI estimate (20% down, ~9% residential / ~10% C&I over 60 months on the rest)
+    const downPayment = Math.round(netEffectiveCost * DOWN_PAYMENT_SHARE);
+    const principal = netEffectiveCost - downPayment;
     const r = (segment === "residential" ? 0.09 : 0.1) / 12;
     const n = 60;
     const monthlyEmi = Math.round(
@@ -114,6 +117,7 @@ function CalculatorForm({ initialBill }: { initialBill?: number }) {
       paybackYears,
       lifetimeNetProfit,
       monthlyEmi,
+      downPayment,
       co2Tonnes,
       treesEquivalent,
       yearlyPoints,
@@ -252,7 +256,7 @@ function CalculatorForm({ initialBill }: { initialBill?: number }) {
             className="mt-3 w-full cursor-pointer accent-primary"
           />
           {results.roofLimited && (
-            <p className="mt-1.5 text-xs font-semibold text-[#9A5D06]">
+            <p className="mt-1.5 text-xs font-semibold text-primary-deep">
               {t(
                 `Sized to fit your ${roofAreaSqFt} sq.ft roof (full bill offset needs ${results.neededKw} kW / ~${results.neededKw * 90} sq.ft).`,
                 `আপনার ${roofAreaSqFt} বর্গফুট ছাদে যতটুকু ধরে ততটুকু ধরা হয়েছে (পুরো বিল মেটাতে ${results.neededKw} কিলোওয়াট / ~${results.neededKw * 90} বর্গফুট দরকার)।`
@@ -290,7 +294,7 @@ function CalculatorForm({ initialBill }: { initialBill?: number }) {
               {t("Compare Solar Loan EMI Option", "সোলার লোন EMI তুলনা করুন", "solar-calculator-client/compare-solar-loan-emi-option")}
             </span>
             <span className="block text-xs text-muted-foreground">
-              {t("0% down · 5-year tenure", "০% ডাউন · ৫ বছর মেয়াদ", "solar-calculator-client/0-down-5-year-tenure")} (~{segment === "residential" ? "9%" : "10%"} {t("p.a., indicative", "বার্ষিক, আনুমানিক", "solar-calculator-client/p-a-indicative")})
+              {t("20% down · 5-year tenure", "২০% ডাউন · ৫ বছর মেয়াদ", "solar-calculator-client/0-down-5-year-tenure")} (~{segment === "residential" ? "9%" : "10%"} {t("p.a., indicative", "বার্ষিক, আনুমানিক", "solar-calculator-client/p-a-indicative")})
             </span>
           </span>
           <input
@@ -307,7 +311,7 @@ function CalculatorForm({ initialBill }: { initialBill?: number }) {
         {/* Hero Result Banner */}
         <div className="rounded-3xl bg-solnce-blue p-6 text-white shadow-elevated sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-[#F6C44C]">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-primary">
               <Sun className="h-3.5 w-3.5" aria-hidden="true" />
               {t("Clear-Sky System Recommendation", "ক্লিয়ার-স্কাই সিস্টেম সুপারিশ", "solar-calculator-client/clear-sky-system-recommendation")}
             </span>
@@ -323,7 +327,7 @@ function CalculatorForm({ initialBill }: { initialBill?: number }) {
               </p>
               <p className="mt-1 font-mono text-4xl font-extrabold tabular-nums">
                 {results.recommendedKw}
-                <span className="ml-1 text-lg text-[#F6C44C]">kW</span>
+                <span className="ml-1 text-lg text-primary">kW</span>
               </p>
               <p className="mt-1 text-xs text-white/80">
                 {t("Uses", "প্রয়োজন", "solar-calculator-client/uses")} ~{results.requiredRoofArea.toLocaleString("en-IN")} {t("sq.ft", "বর্গফুট", "solar-calculator-client/sq-ft")}
@@ -349,7 +353,7 @@ function CalculatorForm({ initialBill }: { initialBill?: number }) {
               </p>
               <p className="mt-1 font-mono text-3xl font-extrabold tabular-nums">
                 {results.paybackYears}
-                <span className="ml-1 text-sm text-[#F6C44C]">{t("yrs", "বছর", "solar-calculator-client/yrs")}</span>
+                <span className="ml-1 text-sm text-primary">{t("yrs", "বছর", "solar-calculator-client/yrs")}</span>
               </p>
               <p className="mt-1 text-xs text-white/80">
                 {t("20+ yrs pure savings after", "এরপর ২০+ বছর শুধুই সাশ্রয়", "solar-calculator-client/20-yrs-pure-savings-after")}
@@ -393,8 +397,8 @@ function CalculatorForm({ initialBill }: { initialBill?: number }) {
             </p>
             <p className="mt-1 text-xs font-semibold text-primary-deep">
               {includeLoan
-                ? `EMI: ~${formatBDT(results.monthlyEmi)}/mo`
-                : t("0% down EMI available", "০% ডাউন EMI সুবিধা আছে", "solar-calculator-client/0-down-emi-available")}
+                ? `${t("20% down", "২০% ডাউন", "solar-calculator-client/20-down")}: ${formatBDT(results.downPayment)} · EMI: ~${formatBDT(results.monthlyEmi)}/mo`
+                : t("20% down EMI available", "২০% ডাউন EMI সুবিধা আছে", "solar-calculator-client/0-down-emi-available")}
             </p>
           </div>
         </div>
@@ -479,7 +483,7 @@ function CalculatorForm({ initialBill }: { initialBill?: number }) {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gold-soft text-[#9A5D06]">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gold-soft text-primary-deep">
                 <Trees className="h-5 w-5" aria-hidden="true" />
               </span>
               <div>
