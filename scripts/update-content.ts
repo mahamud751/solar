@@ -95,7 +95,17 @@ async function main() {
     ["না। ২০% ডাউন EMI-তে প্রথম মাস থেকেই কিস্তি সাধারণত বিলের সাশ্রয়ের চেয়ে কম হয়।",
       "না। মাত্র ২০% আগে দিতে হয়, বাকি অংশের মাসিক কিস্তি সাধারণত প্রথম মাস থেকেই বিলের সাশ্রয়ের চেয়ে কম হয়।"],
   ];
-  // 7. New editable text lines, so they appear in the admin.
+  // 7. Remove "BUET approved" claims, keeping the sentences readable (most specific first).
+  const buetFixes: [RegExp, string][] = [
+    [/ · BUET approved/g, ""], [/ · BUET অনুমোদিত/g, ""],
+    [/, BUET approved/g, ""], [/, BUET অনুমোদিত/g, ""],
+    [/ and approved by BUET\./g, "."], [/ এবং BUET অনুমোদিত।/g, "।"],
+    [/ Approved by BUET\./g, ""], [/ BUET অনুমোদিত।/g, ""],
+    [/BUET-approved structures/g, "storm-proof structures"],
+    [/"BUET-approved s/g, '"S'],
+    [/BUET-approved /g, ""], [/BUET অনুমোদিত /g, ""],
+  ];
+  // 8. New editable text lines, so they appear in the admin.
   const copyDefaults = inlineCopy as Record<string, Record<string, unknown>>;
 
   // Both changes are combined into one update per entry, so neither overwrites the other.
@@ -108,6 +118,15 @@ async function main() {
       .replace(/(?<![০-৯0-9])০% ডাউন/g, () => { count++; return "২০% ডাউন"; });
     for (const [from, to] of faq) text = text.split(JSON.stringify(from).slice(1, -1)).join(JSON.stringify(to).slice(1, -1));
     if (count) notes.push(`0% down → 20% down (${count})`);
+    const buet = (text.match(/BUET/g) ?? []).length;
+    for (const [from, to] of buetFixes) text = text.replace(from, to);
+    if (buet) notes.push(`remove "BUET approved" (${buet})`);
+    let families = 0;
+    text = text
+      .replace(/20,000\+/g, () => { families++; return "200+"; })
+      .replace(/২০,০০০\+/g, () => { families++; return "২০০+"; })
+      .replace(/"value":20000,"suffix":"\+"/g, () => { families++; return '"value":200,"suffix":"+"'; });
+    if (families) notes.push(`20,000+ → 200+ (${families})`);
     let data = JSON.parse(text) as Record<string, unknown>;
     if (r.collection === "copy") {
       const defaults = copyDefaults[r.key] ?? {};

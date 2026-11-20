@@ -98,7 +98,7 @@ export const COMPANY_INFO = {
 // Headline numbers shared with the Green Dhaka homepage stats.
 export const HERO_STATS = [
   { value: 150, suffix: " MW", unit: "MW", label: "Solar installed" },
-  { value: 20000, suffix: "+", unit: "", label: "Homes powered" },
+  { value: 200, suffix: "+", unit: "", label: "Homes powered" },
   { value: 250, suffix: " Cr+", unit: "৳", label: "Customer savings (৳)" },
 ];
 
@@ -720,7 +720,7 @@ export const AERIAL_SHOWCASE_SLIDES = [
     headline: "Mounted, wired and sealed to last 25 years",
     description:
       "GreenPro Mount™ galvanised structures, UV-protected conduits, anti-skid walkways and weatherproof DC/AC protection built for monsoon and cyclone seasons.",
-    metric: "170 km/h storm-tested · BUET approved",
+    metric: "170 km/h storm-tested",
     ctaLabel: "See maintenance & QA",
     ctaHref: "/service/solar-maintenance",
     image: "/images/solar-engineering.jpg",
@@ -751,7 +751,7 @@ export const FAQS: FaqItem[] = [
     id: "why-choose-green-dhaka",
     question: "Why choose Green Dhaka?",
     answer:
-      "We offer a Savings Guarantee with a money-back promise, BUET-approved GreenPro Mount™ structures tested for 170 km/h storms, Tier-1 LONGi and Trina panels, net-metering paperwork handled for you, 20% down EMI and proactive maintenance visits — all without middlemen.",
+      "We offer a Savings Guarantee with a money-back promise, GreenPro Mount™ structures tested for 170 km/h storms, Tier-1 LONGi and Trina panels, net-metering paperwork handled for you, 20% down EMI and proactive maintenance visits — all without middlemen.",
   },
   {
     id: "how-does-solar-work",
@@ -856,7 +856,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       {
         heading: "How Green Dhaka Compares",
         paragraphs: [
-          "Green Dhaka gives you an itemised quote, a BUET-approved GreenPro Mount™ structure tested for 170 km/h storms, in-house installation teams, net-metering paperwork handled end to end, and a Savings Guarantee backed by a money-back promise.",
+          "Green Dhaka gives you an itemised quote, a GreenPro Mount™ structure tested for 170 km/h storms, in-house installation teams, net-metering paperwork handled end to end, and a Savings Guarantee backed by a money-back promise.",
         ],
       },
     ],
@@ -975,7 +975,7 @@ export const VALUES = [
   {
     title: "Built for Bangladesh's weather",
     description:
-      "GreenPro Mount™ structures are tested for 170 km/h storms and approved by BUET.",
+      "GreenPro Mount™ structures are tested for 170 km/h storms.",
   },
   {
     title: "Service for 25 years",

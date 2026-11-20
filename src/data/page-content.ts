@@ -294,7 +294,7 @@ type GuideCopy = {
 
 export const GUIDE_LABELS: Bi<GuideCopy> = {
   en: {
-    chips: ["20,000+ happy families", "25-year warranty", "20% down EMI"],
+    chips: ["200+ happy families", "25-year warranty", "20% down EMI"],
     whatIs: "What is it?",
     components: "System components",
     didYouKnow: "Did you know?",
@@ -328,7 +328,7 @@ export const GUIDE_LABELS: Bi<GuideCopy> = {
     faqHeading: "Frequently asked questions",
   },
   bn: {
-    chips: ["২০,০০০+ সন্তুষ্ট পরিবার", "২৫ বছরের ওয়ারেন্টি", "২০% ডাউন EMI"],
+    chips: ["২০০+ সন্তুষ্ট পরিবার", "২৫ বছরের ওয়ারেন্টি", "২০% ডাউন EMI"],
     whatIs: "এটি কী?",
     components: "সিস্টেমের উপাদান",
     didYouKnow: "আপনি কি জানেন?",
@@ -465,7 +465,7 @@ export const TRUST: Bi<{ heading: string; pill: string; sub: string; cards: Trus
       },
       {
         t: "Storm-proof Structure",
-        d: "GreenPro Mount™ tested for 170 kmph storms — built for Bangladesh's toughest weather. Approved by BUET.",
+        d: "GreenPro Mount™ tested for 170 kmph storms — built for Bangladesh's toughest weather.",
         img: stormImg,
         alt: "Solar panels on a sturdy steel mount under a monsoon storm sky",
       },
@@ -496,7 +496,7 @@ export const TRUST: Bi<{ heading: string; pill: string; sub: string; cards: Trus
       },
       {
         t: "ঝড়-প্রতিরোধী কাঠামো",
-        d: "GreenPro Mount™ ১৭০ কিমি/ঘণ্টা ঝড় প্রতিরোধে পরীক্ষিত — বাংলাদেশের কঠিনতম আবহাওয়ার জন্য তৈরি। BUET অনুমোদিত।",
+        d: "GreenPro Mount™ ১৭০ কিমি/ঘণ্টা ঝড় প্রতিরোধে পরীক্ষিত — বাংলাদেশের কঠিনতম আবহাওয়ার জন্য তৈরি।",
         img: stormImg,
         alt: "শক্ত স্টিল মাউন্টে সোলার প্যানেল, পেছনে বর্ষার ঝড়ের আকাশ",
       },
@@ -567,7 +567,7 @@ export const ABOUT_STEPS = [
 ] as const;
 
 export const ABOUT_STATS = [
-  { value: "20,000+", label: "Homes powered", labelBn: "বাসায় বিদ্যুৎ" },
+  { value: "200+", label: "Homes powered", labelBn: "বাসায় বিদ্যুৎ" },
   { value: "150 MW", label: "Solar installed", labelBn: "সোলার ইনস্টল করা" },
   { value: "৳250 Cr+", label: "Customer savings", labelBn: "গ্রাহকের সাশ্রয়" },
   { value: "4.8★", label: "Average rating", labelBn: "গড় রেটিং" },
@@ -629,8 +629,8 @@ export const HOMES: Bi<HOMESCopy> = {
   en: {
     h1a: "Go Solar at ", h1b: "Zero Investment",
     sub: "Save up to 90% on your home electricity bills. 20% down EMI — your savings pay the instalment.",
-    chips: ["20,000+ homes powered", "25-year warranty", "Installed in 7 days"],
-    stats: [["20,000+", "Homes powered"], ["150 MW", "Installed"], ["৳250 Cr+", "Customer savings"], ["4.8★", "Average rating"]],
+    chips: ["200+ homes powered", "25-year warranty", "Installed in 7 days"],
+    stats: [["200+", "Homes powered"], ["150 MW", "Installed"], ["৳250 Cr+", "Customer savings"], ["4.8★", "Average rating"]],
     introPill: "Introducing", introSub: "Our total-protection plan for every rooftop — generation guaranteed, repairs covered, service proactive.",
     guarantee: [
       ["Generation guarantee or ৳8/unit money-back", "If your system under-generates, we pay you the difference — or refund at ৳8 per unit."],
@@ -641,7 +641,7 @@ export const HOMES: Bi<HOMESCopy> = {
     advHeading: "The Green Dhaka Advantage", thead: ["What matters", "Green Dhaka", "Other brands"],
     advantage: [
       ["Savings guarantee", "৳8/unit money-back promise", "No guarantee"],
-      ["Mounting structure", "GreenPro Mount™ — 170 kmph storm-tested, BUET approved", "Generic local fabrication"],
+      ["Mounting structure", "GreenPro Mount™ — 170 kmph storm-tested", "Generic local fabrication"],
       ["Installation team", "In-house certified engineers", "Subcontractors"],
       ["Net-metering paperwork", "End-to-end handled for you", "Do it yourself"],
       ["After-sales", "Proactive scheduled visits", "Only when you call"],
@@ -652,7 +652,7 @@ export const HOMES: Bi<HOMESCopy> = {
       ["Why should I switch to solar?", "Electricity prices keep rising, but sunlight is free. A rooftop solar system cuts your bill by 70–90% for 25+ years and increases your property's value."],
       ["How high does my electricity bill need to be for solar to make sense?", "Most homes with a monthly bill of ৳2,500 or more see a strong return. Use the savings calculator on our homepage to check your exact numbers."],
       ["How much can I actually save with solar?", "Typically 70–90% of your current bill. A 3 kW system in Dhaka generates roughly 360–400 units per month, depending on shading and roof orientation."],
-      ["What makes Green Dhaka different from other solar providers?", "We are the only company in Bangladesh offering a Savings Guarantee with a money-back promise, plus BUET-approved storm-proof mounting and fully in-house installation."],
+      ["What makes Green Dhaka different from other solar providers?", "We are the only company in Bangladesh offering a Savings Guarantee with a money-back promise, plus storm-proof mounting and fully in-house installation."],
       ["I'm not sure if I have enough space for a solar system.", "One kW needs roughly 100 sq ft of shade-free roof. Most homes in Dhaka can host 3–5 kW. Our free survey confirms exactly what fits."],
       ["Do I need to pay a huge amount upfront?", "No. You pay just 20% upfront, and the monthly EMI on the rest is usually lower than the bill savings from month one."],
       ["How complicated is the net-metering process?", "Not for you — we prepare the drawings, apply to your utility (DESCO/DPDC/REB) and commission the meter as part of the package."],
@@ -677,8 +677,8 @@ export const HOMES: Bi<HOMESCopy> = {
   bn: {
     h1a: "শূন্য বিনিয়োগে ", h1b: "সোলারে যান",
     sub: "বাসার বিদ্যুৎ বিল ৯০% পর্যন্ত সাশ্রয় করুন। ২০% ডাউন EMI — আপনার সাশ্রয়েই কিস্তি পরিশোধ হয়।",
-    chips: ["২০,০০০+ বাসায় বিদ্যুৎ", "২৫ বছরের ওয়ারেন্টি", "৭ দিনে ইনস্টলেশন"],
-    stats: [["20,000+", "বাসায় বিদ্যুৎ"], ["150 MW", "ইনস্টল করা"], ["৳250 Cr+", "গ্রাহকের সাশ্রয়"], ["4.8★", "গড় রেটিং"]],
+    chips: ["২০০+ বাসায় বিদ্যুৎ", "২৫ বছরের ওয়ারেন্টি", "৭ দিনে ইনস্টলেশন"],
+    stats: [["200+", "বাসায় বিদ্যুৎ"], ["150 MW", "ইনস্টল করা"], ["৳250 Cr+", "গ্রাহকের সাশ্রয়"], ["4.8★", "গড় রেটিং"]],
     introPill: "পরিচয় করিয়ে দিচ্ছি", introSub: "প্রতিটি ছাদের জন্য আমাদের সম্পূর্ণ সুরক্ষা প্ল্যান — উৎপাদন নিশ্চিত, মেরামত কভার, সার্ভিস আগেভাগেই।",
     guarantee: [
       ["উৎপাদন গ্যারান্টি অথবা ইউনিটপ্রতি ৳8 ফেরত", "সিস্টেম কম উৎপাদন করলে আমরা পার্থক্য পরিশোধ করি — অথবা ইউনিটপ্রতি ৳8 ফেরত দিই।"],
@@ -689,7 +689,7 @@ export const HOMES: Bi<HOMESCopy> = {
     advHeading: "গ্রিন ঢাকার সুবিধা", thead: ["যা গুরুত্বপূর্ণ", "গ্রিন ঢাকা", "অন্যান্য ব্র্যান্ড"],
     advantage: [
       ["সাশ্রয় গ্যারান্টি", "ইউনিটপ্রতি ৳8 মানি-ব্যাক প্রতিশ্রুতি", "কোনো গ্যারান্টি নেই"],
-      ["মাউন্টিং কাঠামো", "GreenPro Mount™ — ১৭০ কিমি/ঘণ্টা ঝড়ে পরীক্ষিত, BUET অনুমোদিত", "সাধারণ স্থানীয় ফ্যাব্রিকেশন"],
+      ["মাউন্টিং কাঠামো", "GreenPro Mount™ — ১৭০ কিমি/ঘণ্টা ঝড়ে পরীক্ষিত", "সাধারণ স্থানীয় ফ্যাব্রিকেশন"],
       ["ইনস্টলেশন টিম", "নিজস্ব সার্টিফায়েড প্রকৌশলী", "সাব-কন্ট্রাক্টর"],
       ["নেট-মিটারিং কাগজপত্র", "শুরু থেকে শেষ পর্যন্ত আমরাই করি", "নিজেকেই করতে হয়"],
       ["বিক্রয়োত্তর সেবা", "নির্ধারিত আগাম ভিজিট", "শুধু কল করলে"],
@@ -700,7 +700,7 @@ export const HOMES: Bi<HOMESCopy> = {
       ["কেন সোলারে যাব?", "বিদ্যুতের দাম বাড়ছেই, কিন্তু সূর্যের আলো ফ্রি। ছাদের সোলার ২৫+ বছর ধরে বিল ৭০–৯০% কমায় এবং সম্পত্তির মূল্য বাড়ায়।"],
       ["সোলার লাভজনক হতে বিল কত হওয়া দরকার?", "মাসিক বিল ৳2,500 বা তার বেশি হলে বেশিরভাগ বাসা ভালো রিটার্ন পায়। সঠিক হিসাবের জন্য হোমপেজের সাশ্রয় ক্যালকুলেটর ব্যবহার করুন।"],
       ["সোলারে আসলে কত সাশ্রয় হয়?", "সাধারণত বর্তমান বিলের ৭০–৯০%। ঢাকায় ৩ কিলোওয়াট সিস্টেম ছায়া ও ছাদের দিকের উপর নির্ভর করে মাসে প্রায় ৩৬০–৪০০ ইউনিট উৎপাদন করে।"],
-      ["অন্য সোলার কোম্পানি থেকে গ্রিন ঢাকা কেন আলাদা?", "বাংলাদেশে শুধু আমরাই মানি-ব্যাক প্রতিশ্রুতিসহ সাশ্রয় গ্যারান্টি দিই, সাথে BUET অনুমোদিত ঝড়-প্রতিরোধী মাউন্টিং ও সম্পূর্ণ নিজস্ব ইনস্টলেশন।"],
+      ["অন্য সোলার কোম্পানি থেকে গ্রিন ঢাকা কেন আলাদা?", "বাংলাদেশে শুধু আমরাই মানি-ব্যাক প্রতিশ্রুতিসহ সাশ্রয় গ্যারান্টি দিই, সাথে ঝড়-প্রতিরোধী মাউন্টিং ও সম্পূর্ণ নিজস্ব ইনস্টলেশন।"],
       ["আমার ছাদে যথেষ্ট জায়গা আছে কিনা নিশ্চিত নই।", "প্রতি কিলোওয়াটে প্রায় ১০০ বর্গফুট ছায়ামুক্ত ছাদ লাগে। ঢাকার বেশিরভাগ বাসায় ৩–৫ কিলোওয়াট বসানো যায়। ফ্রি সার্ভেতে ঠিক কত বসবে তা নিশ্চিত হয়।"],
       ["শুরুতে কি অনেক টাকা দিতে হবে?", "না। মাত্র ২০% আগে দিতে হয়, বাকি অংশের মাসিক কিস্তি সাধারণত প্রথম মাস থেকেই বিলের সাশ্রয়ের চেয়ে কম হয়।"],
       ["নেট-মিটারিং প্রক্রিয়া কতটা জটিল?", "আপনার জন্য নয় — ড্রয়িং তৈরি, বিতরণ কর্তৃপক্ষে (DESCO/DPDC/REB) আবেদন ও মিটার চালু সবই প্যাকেজের অংশ।"],
@@ -732,7 +732,7 @@ export const SOCIETIES: Bi<SOCIETIESCopy> = {
     stats: [["350+", "Societies powered"], ["60+ MW", "Society rooftops"], ["৳90 Cr+", "Common-area savings"], ["25+ yrs", "System life"]],
     whyHeading: "Trusted Across Bangladesh — Why Choose Green Dhaka",
     why: [
-      ["Quality that lasts more than 25+ years", "Tier-1 panels, certified inverters and the BUET-approved GreenPro Mount™ — engineered for decades of monsoons."],
+      ["Quality that lasts more than 25+ years", "Tier-1 panels, certified inverters and the GreenPro Mount™ — engineered for decades of monsoons."],
       ["End-to-end management", "Survey, AGM-ready proposal, installation, net metering and maintenance — one partner, zero middlemen."],
       ["Guaranteed savings", "Our Savings Guarantee with a money-back promise protects the committee's investment."],
     ],
@@ -746,7 +746,7 @@ export const SOCIETIES: Bi<SOCIETIESCopy> = {
     caseLabel: "Case study", caseName: "Baridhara Green Residency, Dhaka",
     caseStudy: [["System", "100 kW grid-tied, net metered"], ["Commissioned", "March 2025"], ["System cost", "৳78,00,000"], ["Yearly saving", "≈ ৳26 lakh on common-area bills"], ["Payback", "Just 3 years"]],
     safetyHeading: "Your safety, our obsession", safetySub: "State-of-the-art safety measures during and after installation.",
-    safety: ["BUET-approved GreenPro Mount™ (170 kmph storm-tested)", "TÜV-certified modules", "IEC-certified inverters", "Insured, in-house installation crews"],
+    safety: ["GreenPro Mount™ (170 kmph storm-tested)", "TÜV-certified modules", "IEC-certified inverters", "Insured, in-house installation crews"],
     faqHeading: "Frequently Asked Questions",
     faqs: [
       ["How much can our society save with solar?", "Societies typically cut common-area bills (lifts, pumps, parking and staircase lighting) by 70–90%. A 50 kW system in Dhaka generates roughly 6,000–6,600 units per month."],
@@ -758,7 +758,7 @@ export const SOCIETIES: Bi<SOCIETIESCopy> = {
       ["What are the financing options available?", "Society reserve fund, per-flat contribution, or bank EMI. We help structure the option your committee prefers, including 20% down plans."],
       ["What maintenance does a solar system require?", "Periodic panel cleaning and annual electrical checks. Our plans include scheduled proactive maintenance visits at no extra cost."],
       ["Which solar panel is best for residential societies?", "Tier-1 mono PERC modules with a 25-year performance warranty — highest yield per square foot in Bangladesh's climate and heat."],
-      ["How do we ensure the safety and longevity of the installation?", "BUET-approved storm-proof mounting tested to 170 kmph, TÜV-certified modules, IEC-certified inverters and insured workmanship by in-house engineers."],
+      ["How do we ensure the safety and longevity of the installation?", "Storm-proof mounting tested to 170 kmph, TÜV-certified modules, IEC-certified inverters and insured workmanship by in-house engineers."],
     ],
     articleH: "Residential solar power systems for apartments and housing societies in Bangladesh",
     costH: "What's the cost of rooftop solar for housing societies?",
@@ -776,7 +776,7 @@ export const SOCIETIES: Bi<SOCIETIESCopy> = {
     stats: [["350+", "সোসাইটিতে বিদ্যুৎ"], ["60+ MW", "সোসাইটির ছাদে"], ["৳90 Cr+", "কমন-এলাকায় সাশ্রয়"], ["25+ yrs", "সিস্টেমের আয়ু"]],
     whyHeading: "সারা বাংলাদেশে আস্থার নাম — কেন গ্রিন ঢাকা",
     why: [
-      ["২৫+ বছর টিকে থাকা মান", "টিয়ার-১ প্যানেল, সার্টিফায়েড ইনভার্টার ও BUET অনুমোদিত GreenPro Mount™ — দশকের পর দশক বর্ষা সামলাতে তৈরি।"],
+      ["২৫+ বছর টিকে থাকা মান", "টিয়ার-১ প্যানেল, সার্টিফায়েড ইনভার্টার ও GreenPro Mount™ — দশকের পর দশক বর্ষা সামলাতে তৈরি।"],
       ["শুরু থেকে শেষ পর্যন্ত ব্যবস্থাপনা", "সার্ভে, AGM-উপযোগী প্রস্তাবনা, ইনস্টলেশন, নেট মিটারিং ও রক্ষণাবেক্ষণ — একজন অংশীদার, কোনো দালাল নেই।"],
       ["নিশ্চিত সাশ্রয়", "মানি-ব্যাক প্রতিশ্রুতিসহ আমাদের সাশ্রয় গ্যারান্টি কমিটির বিনিয়োগ সুরক্ষিত রাখে।"],
     ],
@@ -790,7 +790,7 @@ export const SOCIETIES: Bi<SOCIETIESCopy> = {
     caseLabel: "কেস স্টাডি", caseName: "বারিধারা গ্রিন রেসিডেন্সি, ঢাকা",
     caseStudy: [["সিস্টেম", "১০০ কিলোওয়াট গ্রিড-টায়েড, নেট মিটারড"], ["চালু হয়েছে", "মার্চ ২০২৫"], ["সিস্টেমের খরচ", "৳78,00,000"], ["বার্ষিক সাশ্রয়", "কমন-এলাকার বিলে ≈ ৳26 লাখ"], ["বিনিয়োগ উদ্ধার", "মাত্র ৩ বছর"]],
     safetyHeading: "আপনার নিরাপত্তাই আমাদের প্রথম ভাবনা", safetySub: "ইনস্টলেশনের সময় ও পরে অত্যাধুনিক নিরাপত্তা ব্যবস্থা।",
-    safety: ["BUET অনুমোদিত GreenPro Mount™ (১৭০ কিমি/ঘণ্টা ঝড়ে পরীক্ষিত)", "TÜV-সার্টিফায়েড মডিউল", "IEC-সার্টিফায়েড ইনভার্টার", "বিমাকৃত, নিজস্ব ইনস্টলেশন টিম"],
+    safety: ["GreenPro Mount™ (১৭০ কিমি/ঘণ্টা ঝড়ে পরীক্ষিত)", "TÜV-সার্টিফায়েড মডিউল", "IEC-সার্টিফায়েড ইনভার্টার", "বিমাকৃত, নিজস্ব ইনস্টলেশন টিম"],
     faqHeading: "সাধারণ প্রশ্নোত্তর",
     faqs: [
       ["সোলারে আমাদের সোসাইটি কত সাশ্রয় করতে পারে?", "সোসাইটিগুলো সাধারণত কমন-এলাকার বিল (লিফট, পাম্প, পার্কিং ও সিঁড়ির লাইট) ৭০–৯০% কমায়। ঢাকায় ৫০ কিলোওয়াট সিস্টেম মাসে প্রায় ৬,০০০–৬,৬০০ ইউনিট উৎপাদন করে।"],
@@ -802,7 +802,7 @@ export const SOCIETIES: Bi<SOCIETIESCopy> = {
       ["কী কী ফাইন্যান্সিং অপশন আছে?", "সোসাইটির রিজার্ভ ফান্ড, ফ্ল্যাটপ্রতি চাঁদা বা ব্যাংক EMI। কমিটি যেটি চায়, ২০% ডাউন প্ল্যানসহ আমরা সেটি সাজিয়ে দিই।"],
       ["সোলার সিস্টেমে কী রক্ষণাবেক্ষণ লাগে?", "মাঝে মাঝে প্যানেল পরিষ্কার ও বার্ষিক বৈদ্যুতিক পরীক্ষা। আমাদের প্ল্যানে বাড়তি খরচ ছাড়াই নির্ধারিত রক্ষণাবেক্ষণ ভিজিট অন্তর্ভুক্ত।"],
       ["আবাসিক সোসাইটির জন্য কোন প্যানেল সেরা?", "২৫ বছরের পারফরম্যান্স ওয়ারেন্টিসহ টিয়ার-১ মনো PERC মডিউল — বাংলাদেশের আবহাওয়া ও তাপে প্রতি বর্গফুটে সর্বোচ্চ উৎপাদন।"],
-      ["ইনস্টলেশনের নিরাপত্তা ও দীর্ঘস্থায়িত্ব কীভাবে নিশ্চিত হয়?", "১৭০ কিমি/ঘণ্টায় পরীক্ষিত BUET অনুমোদিত ঝড়-প্রতিরোধী মাউন্টিং, TÜV-সার্টিফায়েড মডিউল, IEC-সার্টিফায়েড ইনভার্টার এবং নিজস্ব প্রকৌশলীদের বিমাকৃত কাজ।"],
+      ["ইনস্টলেশনের নিরাপত্তা ও দীর্ঘস্থায়িত্ব কীভাবে নিশ্চিত হয়?", "১৭০ কিমি/ঘণ্টায় পরীক্ষিত ঝড়-প্রতিরোধী মাউন্টিং, TÜV-সার্টিফায়েড মডিউল, IEC-সার্টিফায়েড ইনভার্টার এবং নিজস্ব প্রকৌশলীদের বিমাকৃত কাজ।"],
     ],
     articleH: "বাংলাদেশে অ্যাপার্টমেন্ট ও হাউজিং সোসাইটির জন্য আবাসিক সোলার সিস্টেম",
     costH: "হাউজিং সোসাইটির ছাদের সোলারে খরচ কত?",
@@ -858,7 +858,7 @@ export const COMMERCIAL: Bi<COMMERCIALCopy> = {
     article: [
       ["What is the commercial solar installation cost in Bangladesh in 2026?", "Grid-tied commercial rooftop systems run indicatively ৳6,500–8,000 per kW installed — a 500 kW system around ৳3.3–4.0 Cr. Cost per kW falls as system size grows. Rooftop type (RCC vs tin shed), building height and evacuation distance move the number most."],
       ["On-grid, off-grid or hybrid?", "Factories with daytime loads and reliable grid access choose on-grid with net metering. Sites with critical loads — cold chains, data rooms, continuous production — add hybrid battery or genset integration. We size the mix from your load profile, collected during the free energy audit."],
-      ["Why choose Green Dhaka for commercial rooftop solar?", "In-house EPC teams (no subcontractors), bankable yield reports, BUET-approved storm-proof mounting tested to 170 kmph, guaranteed generation under GreenSure™, and full utility approval handling — from net metering to SREDA registration."],
+      ["Why choose Green Dhaka for commercial rooftop solar?", "In-house EPC teams (no subcontractors), bankable yield reports, storm-proof mounting tested to 170 kmph, guaranteed generation under GreenSure™, and full utility approval handling — from net metering to SREDA registration."],
     ],
     ctaTitle: "Talk to a solar expert", ctaText: "Get a free energy audit and a bankable proposal for your facility within one week.", ctaButton: "Submit a project enquiry",
   },
@@ -904,7 +904,7 @@ export const COMMERCIAL: Bi<COMMERCIALCopy> = {
     article: [
       ["২০২৬ সালে বাংলাদেশে বাণিজ্যিক সোলার ইনস্টলেশনের খরচ কত?", "গ্রিড-টায়েড বাণিজ্যিক ছাদের সিস্টেমে আনুমানিক ৳6,500–8,000 প্রতি কিলোওয়াট — ৫০০ কিলোওয়াটে প্রায় ৳3.3–4.0 কোটি। সিস্টেম যত বড়, প্রতি কিলোওয়াট খরচ তত কম। ছাদের ধরন (RCC বনাম টিনশেড), ভবনের উচ্চতা ও সংযোগ দূরত্ব খরচে সবচেয়ে বেশি প্রভাব ফেলে।"],
       ["অন-গ্রিড, অফ-গ্রিড না হাইব্রিড?", "দিনের লোড ও নির্ভরযোগ্য গ্রিডের কারখানা নেট মিটারিংসহ অন-গ্রিড বেছে নেয়। কোল্ড চেইন, ডেটা রুম বা অবিরাম উৎপাদনের মতো গুরুত্বপূর্ণ লোডের সাইটে হাইব্রিড ব্যাটারি বা জেনসেট যুক্ত হয়। ফ্রি এনার্জি অডিটে সংগৃহীত লোড প্রোফাইল থেকে আমরা সঠিক মিশ্রণ ঠিক করি।"],
-      ["বাণিজ্যিক ছাদের সোলারে কেন গ্রিন ঢাকা?", "নিজস্ব EPC টিম (কোনো সাব-কন্ট্রাক্টর নেই), ব্যাংকযোগ্য উৎপাদন রিপোর্ট, ১৭০ কিমি/ঘণ্টায় পরীক্ষিত BUET অনুমোদিত ঝড়-প্রতিরোধী মাউন্টিং, GreenSure™-এ নিশ্চিত উৎপাদন এবং নেট মিটারিং থেকে SREDA নিবন্ধন পর্যন্ত সব অনুমোদন সামলানো।"],
+      ["বাণিজ্যিক ছাদের সোলারে কেন গ্রিন ঢাকা?", "নিজস্ব EPC টিম (কোনো সাব-কন্ট্রাক্টর নেই), ব্যাংকযোগ্য উৎপাদন রিপোর্ট, ১৭০ কিমি/ঘণ্টায় পরীক্ষিত ঝড়-প্রতিরোধী মাউন্টিং, GreenSure™-এ নিশ্চিত উৎপাদন এবং নেট মিটারিং থেকে SREDA নিবন্ধন পর্যন্ত সব অনুমোদন সামলানো।"],
     ],
     ctaTitle: "সোলার বিশেষজ্ঞের সাথে কথা বলুন", ctaText: "এক সপ্তাহের মধ্যে আপনার প্রতিষ্ঠানের জন্য ফ্রি এনার্জি অডিট ও ব্যাংকযোগ্য প্রস্তাবনা নিন।", ctaButton: "প্রকল্পের অনুসন্ধান জমা দিন",
   },
@@ -1120,7 +1120,7 @@ export const HOME_STEPS: Bi<{ heading: string; steps: string[] }> = {
 
 export const HOME_REVIEWS: Bi<{ heading: string; reviews: { n: string; q: string }[] }> = {
   en: {
-    heading: "Loved by 20,000+ families",
+    heading: "Loved by 200+ families",
     reviews: [
       { n: "Rahim U., Dhaka", q: "Our bill went from ৳8,000 to under ৳900. Installation was spotless and on time." },
       { n: "Nusrat H., Chattogram", q: "They took care of everything including the net-metering application. The app is genuinely useful." },
@@ -1128,7 +1128,7 @@ export const HOME_REVIEWS: Bi<{ heading: string; reviews: { n: string; q: string
     ],
   },
   bn: {
-    heading: "২০,০০০+ পরিবারের ভালোবাসা",
+    heading: "২০০+ পরিবারের ভালোবাসা",
     reviews: [
       { n: "রহিম উ., ঢাকা", q: "আমাদের বিল ৳8,000 থেকে ৳900-এর নিচে নেমে এসেছে। ইনস্টলেশন ছিল নিখুঁত ও সময়মতো।" },
       { n: "নুসরাত হ., চট্টগ্রাম", q: "নেট-মিটারিং আবেদনসহ সবকিছু তারা নিজেরাই সামলেছে। অ্যাপটি সত্যিই কাজের।" },
