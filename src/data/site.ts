@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 /** Public origin used for canonical URLs, Open Graph, sitemap and JSON-LD. */
-export const SITE_URL = new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://greendhaka.lovable.app").origin;
+export const SITE_URL = new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://greendhaka.com").origin;
 export const SITE_NAME = "Green Dhaka";
 export const SITE_LOGO = "/images/gd/green-dhaka-logo.png";
 

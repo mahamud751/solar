@@ -22,17 +22,17 @@ import { offeringsNav, solutionsNav } from "@/components/site/SiteChrome";
 const AI_LINKS = [
   {
     name: "Claude",
-    href: "https://claude.ai/new?q=Tell%20me%20about%20Green%20Dhaka%20(greendhaka.lovable.app)%2C%20a%20rooftop%20solar%20company%20in%20Bangladesh",
+    href: "https://claude.ai/new?q=Tell%20me%20about%20Green%20Dhaka%20(greendhaka.com)%2C%20a%20rooftop%20solar%20company%20in%20Bangladesh",
     accent: "bg-[#D97757]/15 text-[#F2B59F] border-[#D97757]/30",
   },
   {
     name: "Gemini",
-    href: "https://gemini.google.com/app?q=Explain%20Green%20Dhaka%20(greendhaka.lovable.app)%20rooftop%20solar%20solutions%20in%20Bangladesh",
+    href: "https://gemini.google.com/app?q=Explain%20Green%20Dhaka%20(greendhaka.com)%20rooftop%20solar%20solutions%20in%20Bangladesh",
     accent: "bg-primary/15 text-primary border-primary/30",
   },
   {
     name: "Perplexity",
-    href: "https://www.perplexity.ai/search?q=Green+Dhaka+greendhaka.lovable.app+rooftop+solar+Bangladesh+review",
+    href: "https://www.perplexity.ai/search?q=Green+Dhaka+greendhaka.com+rooftop+solar+Bangladesh+review",
     accent: "bg-[#22B8CF]/15 text-[#99E9F2] border-[#22B8CF]/30",
   },
 ];

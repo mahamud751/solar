@@ -31,6 +31,34 @@
     "book-a-free-survey": {
       "en": "Book a free survey",
       "bn": "ফ্রি সার্ভে বুক করুন"
+    },
+    "get-in-touch": {
+      "en": "Get in touch",
+      "bn": "যোগাযোগ করুন"
+    },
+    "talk-to-our-solar-team": {
+      "en": "Talk to our solar team — we reply within one working day.",
+      "bn": "আমাদের সোলার টিমের সাথে কথা বলুন — এক কর্মদিবসের মধ্যে উত্তর দিই।"
+    },
+    "email": {
+      "en": "Email",
+      "bn": "ইমেইল"
+    },
+    "phone": {
+      "en": "Phone",
+      "bn": "ফোন"
+    },
+    "website": {
+      "en": "Website",
+      "bn": "ওয়েবসাইট"
+    },
+    "office": {
+      "en": "Office",
+      "bn": "অফিস"
+    },
+    "office-hours": {
+      "en": "Office hours",
+      "bn": "অফিস সময়"
     }
   },
   "associate": {
