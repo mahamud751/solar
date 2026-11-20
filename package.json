@@ -12,7 +12,8 @@
     "db:migrate": "prisma migrate deploy",
     "db:seed": "prisma db seed",
     "admin:password": "tsx scripts/admin-password.ts",
-    "db:local": "node scripts/local-database.mjs"
+    "db:local": "node scripts/local-database.mjs",
+    "db:update-content": "tsx scripts/update-content.ts"
   },
   "dependencies": {
     "@oddbird/popover-polyfill": "^0.7.3",

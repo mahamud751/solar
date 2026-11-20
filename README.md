@@ -34,4 +34,14 @@ unset solar_admin_password
 
 The seed adds initial content and can be rerun. It preserves edits, drafts, and deletions. The default content includes the existing sample company phone and other marketing details, which can be updated in the admin.
 
+## Updating an existing database
+
+After deploying new code, bring the database content up to date. `db:seed` only adds missing entries; `db:update-content` also updates older values that still hold a previous default, and keeps anything edited in the admin.
+
+```bash
+npm run db:migrate
+npm run db:update-content            # preview, writes nothing
+npm run db:update-content -- --apply # apply the changes
+```
+
 Run `npm run build` and `npm start` for a production-mode local check. Keep `DATABASE_URL` available to the runtime and apply migrations before starting. For HTTPS behind a reverse proxy, configure it to forward the scheme or set `ADMIN_SECURE_COOKIES=true`.
