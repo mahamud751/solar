@@ -141,6 +141,12 @@ async function main() {
       text = parts.join(`"${to}"`);
     }
     if (badges) notes.push(`hero badges: Tier-1 Modules, 80% bill reduction (${badges})`);
+    // 10. "Explore solar for homes" opens the residential solar service page.
+    if (r.collection === "blocks" && r.key === "OFFER_TABS") {
+      const homes = text.split('"to":"/homes"').length - 1;
+      text = text.split('"to":"/homes"').join('"to":"/service/residential-solar"');
+      if (homes) notes.push(`homes tab link → /service/residential-solar (${homes})`);
+    }
     let data = JSON.parse(text) as Record<string, unknown>;
     if (r.collection === "copy") {
       const defaults = copyDefaults[r.key] ?? {};

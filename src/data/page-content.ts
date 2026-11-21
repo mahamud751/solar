@@ -386,7 +386,7 @@ export const OFFER_TABS: Bi<Offer[]> = {
   en: [
     {
       label: "Homes",
-      to: "/homes",
+      to: "/service/residential-solar",
       img: homesImg,
       headline: "Solar for Homes",
       d: "Save up to 90% on your home electricity bills.",
@@ -415,7 +415,7 @@ export const OFFER_TABS: Bi<Offer[]> = {
   bn: [
     {
       label: "বাসাবাড়ি",
-      to: "/homes",
+      to: "/service/residential-solar",
       img: homesImg,
       headline: "বাসাবাড়ির জন্য সোলার",
       d: "আপনার বাসার বিদ্যুৎ বিল ৯০% পর্যন্ত সাশ্রয় করুন।",
