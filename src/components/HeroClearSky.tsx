@@ -281,11 +281,11 @@ export function HeroClearSky() {
             <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 px-2 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-1.5 font-medium">
                 <Zap className="h-3.5 w-3.5 text-gold" aria-hidden="true" />
-                {t("Tier-1 LONGi & Trina Modules", "টিয়ার-১ LONGi ও Trina মডিউল", "hero-clear-sky/tier-1-longi-trina-modules")}
+                {t("Tier-1 Modules", "টিয়ার-১ মডিউল", "hero-clear-sky/tier-1-longi-trina-modules")}
               </span>
               <span className="inline-flex items-center gap-1.5 font-medium">
                 <TrendingDown className="h-3.5 w-3.5 text-success" aria-hidden="true" />
-                {t("Up to 90% bill reduction from Month 1", "প্রথম মাস থেকেই বিল ৯০% পর্যন্ত কম", "hero-clear-sky/up-to-90-bill-reduction-from-month")}
+                {t("Up to 80% bill reduction from Month 1", "প্রথম মাস থেকেই বিল ৮০% পর্যন্ত কম", "hero-clear-sky/up-to-90-bill-reduction-from-month")}
               </span>
             </div>
           </div>

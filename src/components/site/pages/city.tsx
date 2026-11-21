@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Check, MapPin, Sun, ShieldCheck, Wrench, BadgeCheck } from "lucide-react";
-import { LeadForm } from "@/components/site/SiteChrome";
+import { QuoteForm } from "@/components/QuoteForm";
 import { OfferTabs, TrustSection } from "@/components/site/Offerings";
 import { Stats, FaqList, CtaBand, Reviews } from "@/components/site/Blocks";
 import { cityName, divisionName } from "@/data/cities";
@@ -31,14 +31,22 @@ export function CityPage({ slug }: { slug: string }) {
     <>
       <section className="relative overflow-hidden bg-secondary text-secondary-foreground">
         <Image src={BLOCKS.PAGE_IMAGES.cityHeroImage} alt={`Rooftop solar in ${city.name}`} fill sizes="100vw" className="absolute inset-0 h-full w-full object-cover opacity-30" />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-2 lg:py-24">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 lg:grid-cols-2 lg:py-24">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-4 py-1.5 text-sm font-semibold"><MapPin size={16} /> {n}, {div} {copy.regionLabel}</p>
             <h1 className="mt-5 font-display text-4xl font-bold leading-tight sm:text-5xl">{title[0]}{title.length > 1 && <><span className="text-primary">{n}</span>{title.slice(1).join(n)}</>}</h1>
             <p className="mt-5 max-w-xl text-lg opacity-90">{format(copy.description)}</p>
             <ul className="mt-6 space-y-2">{copy.bullets.map((x) => <li key={x} className="flex items-center gap-2"><Check className="text-primary" size={18} />{x}</li>)}</ul>
           </div>
-          <LeadForm />
+          <div id="quote" className="scroll-mt-28">
+            <QuoteForm
+              compact
+              title={`Request Your Solar Proposal in ${city.name}`}
+              titleBn={`${cityName(city, "bn")}-এ আপনার সোলার প্রস্তাব চান`}
+              subtitle="Receive an itemised quote, generation estimate and financing options within 24 hours."
+              subtitleBn="২৪ ঘণ্টার মধ্যে বিস্তারিত কোটেশন, উৎপাদনের হিসাব ও অর্থায়নের বিকল্প পান।"
+            />
+          </div>
         </div>
       </section>
       <Stats items={stats} />

@@ -127,6 +127,20 @@ async function main() {
       .replace(/২০,০০০\+/g, () => { families++; return "২০০+"; })
       .replace(/"value":20000,"suffix":"\+"/g, () => { families++; return '"value":200,"suffix":"+"'; });
     if (families) notes.push(`20,000+ → 200+ (${families})`);
+    // 9. Homepage hero badges: generic Tier-1 modules, 80% bill reduction (exact old defaults only).
+    const heroBadges: [string, string][] = [
+      ["Tier-1 LONGi & Trina Modules", "Tier-1 Modules"],
+      ["টিয়ার-১ LONGi ও Trina মডিউল", "টিয়ার-১ মডিউল"],
+      ["Up to 90% bill reduction from Month 1", "Up to 80% bill reduction from Month 1"],
+      ["প্রথম মাস থেকেই বিল ৯০% পর্যন্ত কম", "প্রথম মাস থেকেই বিল ৮০% পর্যন্ত কম"],
+    ];
+    let badges = 0;
+    for (const [from, to] of heroBadges) {
+      const parts = text.split(`"${from}"`);
+      badges += parts.length - 1;
+      text = parts.join(`"${to}"`);
+    }
+    if (badges) notes.push(`hero badges: Tier-1 Modules, 80% bill reduction (${badges})`);
     let data = JSON.parse(text) as Record<string, unknown>;
     if (r.collection === "copy") {
       const defaults = copyDefaults[r.key] ?? {};
