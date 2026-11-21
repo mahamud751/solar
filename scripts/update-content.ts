@@ -155,11 +155,17 @@ async function main() {
         notes.push(`page SEO: ${seoCount} shorter title/description field(s)`);
       }
     }
-    // 10. "Explore solar for homes" opens the residential solar service page.
+    // 10. "Explore solar for homes"/"societies"/"commercial" open their service pages.
     if (r.collection === "blocks" && r.key === "OFFER_TABS") {
       const homes = text.split('"to":"/homes"').length - 1;
       text = text.split('"to":"/homes"').join('"to":"/service/residential-solar"');
       if (homes) notes.push(`homes tab link → /service/residential-solar (${homes})`);
+      const societies = text.split('"to":"/housing-society"').length - 1;
+      text = text.split('"to":"/housing-society"').join('"to":"/service/housing-society-solar"');
+      if (societies) notes.push(`societies tab link → /service/housing-society-solar (${societies})`);
+      const commercial = text.split('"to":"/commercial"').length - 1;
+      text = text.split('"to":"/commercial"').join('"to":"/service/industrial-solar"');
+      if (commercial) notes.push(`commercial tab link → /service/industrial-solar (${commercial})`);
     }
     let data = JSON.parse(text) as Record<string, unknown>;
     if (r.collection === "copy") {

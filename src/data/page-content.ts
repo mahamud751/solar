@@ -395,7 +395,7 @@ export const OFFER_TABS: Bi<Offer[]> = {
     },
     {
       label: "Housing Societies",
-      to: "/housing-society",
+      to: "/service/housing-society-solar",
       img: societyImg,
       headline: "Solar for Housing Societies",
       d: "Reduce common-area power costs and add long-term value.",
@@ -404,7 +404,7 @@ export const OFFER_TABS: Bi<Offer[]> = {
     },
     {
       label: "Commercial",
-      to: "/commercial",
+      to: "/service/industrial-solar",
       img: commercialImg,
       headline: "Solar for Commercial",
       d: "Power your business with green energy and save on costs.",
@@ -424,7 +424,7 @@ export const OFFER_TABS: Bi<Offer[]> = {
     },
     {
       label: "হাউজিং সোসাইটি",
-      to: "/housing-society",
+      to: "/service/housing-society-solar",
       img: societyImg,
       headline: "হাউজিং সোসাইটির জন্য সোলার",
       d: "কমন-এলাকার বিদ্যুৎ খরচ কমান, দীর্ঘমেয়াদি মূল্য যোগ করুন।",
@@ -433,7 +433,7 @@ export const OFFER_TABS: Bi<Offer[]> = {
     },
     {
       label: "বাণিজ্যিক",
-      to: "/commercial",
+      to: "/service/industrial-solar",
       img: commercialImg,
       headline: "বাণিজ্যিক প্রতিষ্ঠানের জন্য সোলার",
       d: "সবুজ শক্তিতে ব্যবসা চালান, খরচ বাঁচান।",
