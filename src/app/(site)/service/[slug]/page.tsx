@@ -1,6 +1,6 @@
 import { getSiteContent } from "@/server/content";
 import type { Metadata } from "next";
-import { pageMeta } from "@/data/site";
+import { absolute, breadcrumbLd, fitTitle, jsonLd, pageMeta } from "@/data/site";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -29,7 +29,7 @@ export async function generateMetadata({
   const { en: svc } = entry;
   return pageMeta({
     path: `/service/${svc.slug}`,
-    title: `${svc.title} in Bangladesh — ${svc.highlightMetric} ${svc.highlightLabel} | Green Dhaka`,
+    title: fitTitle(`${svc.title} in Bangladesh`),
     description: svc.description,
     image: svc.image,
   });
@@ -56,8 +56,27 @@ export default async function ServiceDetailPage({
       ? "Industrial"
       : "Residential";
 
+  const pageUrl = absolute(`/service/${svc.slug}`);
+  const serviceLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: svc.title,
+    serviceType: svc.title,
+    description: svc.description,
+    url: pageUrl,
+    image: absolute(svc.image),
+    category: svc.category,
+    areaServed: { "@type": "Country", name: "Bangladesh" },
+    provider: { "@type": "Organization", name: COMPANY_INFO.name, url: absolute("/"), telephone: COMPANY_INFO.phoneDial },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(serviceLd)} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(breadcrumbLd([["Services", "/service"], [svc.title, `/service/${svc.slug}`]]))}
+      />
       <section className="bg-hero-paper pt-28 pb-16 sm:pt-32 sm:pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Link

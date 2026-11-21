@@ -12,19 +12,40 @@ export const dynamic = "force-dynamic";
 export default async function SiteLayout({ children }: { children: ReactNode }) {
   const { COPY, ...content } = await getSiteContent();
   const company = content.COMPANY_INFO;
+  const sameAs = Object.values(company.socials ?? {}).filter((link): link is string => Boolean(link));
   const organizationLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     name: company.name,
     url: SITE_URL,
     logo: `${SITE_URL}${company.logoImage ?? SITE_LOGO}`,
     telephone: company.phoneHref.slice(4),
-    areaServed: "BD",
-    address: { "@type": "PostalAddress", addressLocality: company.address, addressCountry: "BD" },
+    email: company.email,
+    areaServed: { "@type": "Country", name: "Bangladesh" },
+    address: { "@type": "PostalAddress", addressLocality: "Dhaka", addressCountry: "BD" },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: company.phoneHref.slice(4),
+      contactType: "sales",
+      areaServed: "BD",
+      availableLanguage: ["English", "Bengali"],
+    },
+    ...(sameAs.length > 0 && { sameAs }),
+  };
+  const websiteLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    name: company.name,
+    url: SITE_URL,
+    inLanguage: ["en-BD", "bn-BD"],
+    publisher: { "@id": `${SITE_URL}/#organization` },
   };
   return (
     <ContentProvider content={content}>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(organizationLd)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(websiteLd)} />
       <LanguageProvider copy={COPY}>
         <a
           href="#main-content"

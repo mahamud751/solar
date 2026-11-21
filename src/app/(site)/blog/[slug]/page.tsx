@@ -1,6 +1,6 @@
 import { getSiteContent } from "@/server/content";
 import type { Metadata } from "next";
-import { pageMeta } from "@/data/site";
+import { absolute, breadcrumbLd, fitTitle, jsonLd, pageMeta } from "@/data/site";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -20,11 +20,21 @@ export async function generateMetadata({
   const { en: article } = entry;
   return pageMeta({
     path: `/blog/${article.slug}`,
-    title: `${article.title} | Green Dhaka`,
+    title: fitTitle(article.title),
     description: article.excerpt,
     type: "article",
     image: article.image,
   });
+}
+
+const MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+
+/** "March 2026" or "12 March 2026" → ISO date for structured data; undefined when unrecognised. */
+function isoMonth(text: string) {
+  const parts = text.toLowerCase().match(/(?:(\d{1,2})\s+)?([a-z]+)\s+(\d{4})/);
+  const month = parts ? MONTHS.indexOf(parts[2]!) : -1;
+  if (!parts || month < 0) return undefined;
+  return `${parts[3]}-${String(month + 1).padStart(2, "0")}-${String(Number(parts[1] ?? 1)).padStart(2, "0")}`;
 }
 
 export default async function BlogArticlePage({
@@ -40,8 +50,29 @@ export default async function BlogArticlePage({
 
   const others = content.BLOG_ARTICLES.filter(({ en }) => en.slug !== article.slug);
 
+  const published = isoMonth(article.publishedAt);
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.excerpt,
+    image: absolute(article.image),
+    url: absolute(`/blog/${article.slug}`),
+    mainEntityOfPage: absolute(`/blog/${article.slug}`),
+    articleSection: article.category,
+    inLanguage: "en-BD",
+    ...(published && { datePublished: published, dateModified: published }),
+    author: { "@type": "Organization", name: article.author || content.COMPANY_INFO.name, url: absolute("/about-us") },
+    publisher: { "@type": "Organization", name: content.COMPANY_INFO.name, logo: { "@type": "ImageObject", url: absolute(content.COMPANY_INFO.logoImage ?? "/images/gd/green-dhaka-logo.png") } },
+  };
+
   return (
     <article className="bg-background pt-28 pb-20 sm:pt-32">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(articleLd)} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(breadcrumbLd([["Blog", "/blog"], [article.title, `/blog/${article.slug}`]]))}
+      />
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <Link
           href="/blog"

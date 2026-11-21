@@ -1,4 +1,6 @@
 import { getPageMetadata } from "@/server/page-metadata";
+import { getSiteContent } from "@/server/content";
+import { jsonLd } from "@/data/site";
 import React from "react";
 import { HeroClearSky } from "@/components/HeroClearSky";
 import { ServicesSection } from "@/components/ServicesSection";
@@ -17,9 +19,20 @@ export function generateMetadata() {
   return getPageMetadata("home");
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { FAQS } = await getSiteContent();
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map(({ en }) => ({
+      "@type": "Question",
+      name: en.question,
+      acceptedAnswer: { "@type": "Answer", text: en.answer },
+    })),
+  };
   return (
     <>
+      {FAQS.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqLd)} />}
       <HeroClearSky />
       <ServicesSection />
       <CoverageSection />

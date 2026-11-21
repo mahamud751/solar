@@ -31,9 +31,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const DEFAULT_TITLE = "Green Dhaka — Rooftop Solar for Homes & Businesses in Bangladesh";
+const DEFAULT_TITLE = "Green Dhaka — Rooftop Solar Company in Bangladesh";
 const DEFAULT_DESCRIPTION =
-  "Go solar with Green Dhaka's end-to-end rooftop installation, financing and long-term support. Save up to 90% on electricity bills with net metering, 20% down EMI and a 25-year warranty.";
+  "Rooftop solar for homes and businesses in Bangladesh. Save up to 80% on electricity bills with net metering, 20% down EMI and a 25-year warranty.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

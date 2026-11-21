@@ -25,9 +25,11 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Promise<{ city: string }> }) {
   const { city: slug } = await params;
-  const { CITIES, COMPANY_INFO } = await getSiteContent();
+  const { CITIES, COMPANY_INFO, BLOCKS } = await getSiteContent();
   const city = CITIES.find((entry) => entry.slug === slug);
   if (!city) notFound();
+  const format = (text: string) => text.replaceAll("{city}", city.name).replaceAll("{division}", city.division);
+  const faqs = BLOCKS.CITY_PAGE.en.faqs;
   const url = `${SITE_URL}/solar-company-in-${city.slug}`;
   return (
     <div className="pt-[4.75rem]">
@@ -37,6 +39,8 @@ export default async function Page({ params }: { params: Promise<{ city: string 
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: `${COMPANY_INFO.name} — Solar Company in ${city.name}`,
+          description: format(BLOCKS.CITY_PAGE.en.seoDescription),
+          parentOrganization: { "@id": `${SITE_URL}/#organization` },
           url,
           image: `${SITE_URL}${COMPANY_INFO.logoImage ?? "/images/gd/green-dhaka-logo.png"}`,
           telephone: COMPANY_INFO.phoneDial,
@@ -61,6 +65,20 @@ export default async function Page({ params }: { params: Promise<{ city: string 
           ],
         })}
       />
+      {faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={jsonLd({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map(([question, answer]) => ({
+              "@type": "Question",
+              name: format(question),
+              acceptedAnswer: { "@type": "Answer", text: format(answer) },
+            })),
+          })}
+        />
+      )}
       <CityPage slug={city.slug} />
     </div>
   );

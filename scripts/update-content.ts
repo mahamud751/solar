@@ -13,10 +13,12 @@ import { Prisma } from "../src/generated/prisma/client";
 import { seedEntries } from "../src/data/catalog";
 import { EQUIPMENT_PARTNERS } from "../src/data/page-content";
 import inlineCopy from "../src/data/inline-copy.json";
+import seoChanges from "./seo-2026-11-updates.json";
 import { database } from "../src/server/db";
 
 const apply = process.argv.includes("--apply");
 const db = database();
+const seoUpdates = seoChanges as [key: string, field: string, from: string, to: string][];
 type Json = Prisma.InputJsonValue;
 type Key = { collection: string; key: string };
 const changes: { label: string; run: () => Promise<unknown> }[] = [];
@@ -141,6 +143,18 @@ async function main() {
       text = parts.join(`"${to}"`);
     }
     if (badges) notes.push(`hero badges: Tier-1 Modules, 80% bill reduction (${badges})`);
+    // 11. Page SEO: shorter titles and descriptions, 80% savings (only fields still on the old default).
+    if (r.collection === "seo") {
+      const fields = JSON.parse(text) as Record<string, string>;
+      let seoCount = 0;
+      for (const [key, field, from, to] of seoUpdates) {
+        if (key === r.key && fields[field] === from) { fields[field] = to; seoCount++; }
+      }
+      if (seoCount) {
+        text = JSON.stringify(fields);
+        notes.push(`page SEO: ${seoCount} shorter title/description field(s)`);
+      }
+    }
     // 10. "Explore solar for homes" opens the residential solar service page.
     if (r.collection === "blocks" && r.key === "OFFER_TABS") {
       const homes = text.split('"to":"/homes"').length - 1;
