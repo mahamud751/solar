@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -9,6 +9,9 @@ import {
   Zap,
   TrendingDown,
   Sparkles,
+  Moon,
+  Pause,
+  Play,
 } from "lucide-react";
 import { formatBDT } from "@/data/solnce";
 import { useContent } from "@/data/content";
@@ -21,9 +24,27 @@ function irradianceAtHour(hour: number): number {
   return Math.max(0, Math.sin(normalized * Math.PI) ** 1.45 * 0.92);
 }
 
+const DAY_START = 6;
+const DAY_END = 19;
+/** Real seconds for the sun to cross from 6:00 AM to 7:00 PM, then a short night pause */
+const DAY_SECONDS = 12;
+const NIGHT_SECONDS = 1.6;
+
+const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
+function subscribeReducedMotion(onChange: () => void) {
+  const query = window.matchMedia(REDUCED_MOTION);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+function getReducedMotion() {
+  return window.matchMedia(REDUCED_MOTION).matches;
+}
+
 function formatHour(h: number): string {
-  const whole = Math.floor(h);
-  const mins = Math.round((h - whole) * 60);
+  // Round to the nearest 5 minutes so the clock reads cleanly while animating
+  const total = Math.round((h * 60) / 5) * 5;
+  const whole = Math.floor(total / 60);
+  const mins = total % 60;
   const suffix = whole >= 12 ? "PM" : "AM";
   const display12 = whole % 12 === 0 ? 12 : whole % 12;
   return `${display12}:${mins.toString().padStart(2, "0")} ${suffix}`;
@@ -57,6 +78,47 @@ export function HeroClearSky() {
   }, []);
   const [presetId, setPresetId] = useState<string>("home");
   const [hour, setHour] = useState<number>(12.5);
+  // null until the visitor presses play/pause or moves the slider
+  const [playChoice, setPlayChoice] = useState<boolean | null>(null);
+  const reducedMotion = useSyncExternalStore(subscribeReducedMotion, getReducedMotion, () => false);
+  // Autoplay by default, except for people who prefer reduced motion
+  const autoplay = playChoice ?? !reducedMotion;
+  const setAutoplay = (on: boolean) => setPlayChoice(on);
+  const [inView, setInView] = useState(false);
+  const panel = useRef<HTMLDivElement>(null);
+
+  // Only animate while the simulator is on screen
+  useEffect(() => {
+    const el = panel.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.15 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  // Sun moves from sunrise to sunset, rests briefly at night, then loops
+  const hourRef = useRef(hour);
+  useEffect(() => {
+    hourRef.current = hour;
+  }, [hour]);
+  useEffect(() => {
+    if (!autoplay || !inView) return;
+    const span = DAY_END - DAY_START;
+    const cycle = DAY_SECONDS + NIGHT_SECONDS;
+    // Continue from the current hour instead of jumping back to sunrise
+    let elapsed = ((hourRef.current - DAY_START) / span) * DAY_SECONDS;
+    let last = performance.now();
+    let frame = 0;
+    const tick = (now: number) => {
+      elapsed = (elapsed + Math.min(0.1, (now - last) / 1000)) % cycle;
+      last = now;
+      const next = elapsed >= DAY_SECONDS ? DAY_END : DAY_START + (elapsed / DAY_SECONDS) * span;
+      setHour(next);
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [autoplay, inView]);
 
   const preset = useMemo(
     () => ROOF_PRESETS.find((p) => p.id === presetId) ?? ROOF_PRESETS[0],
@@ -67,6 +129,11 @@ export function HeroClearSky() {
   const liveOutputKw = +(preset.capacityKw * liveFactor).toFixed(1);
   const dailyUnits = Math.round(preset.capacityKw * 4.5);
   const monthlySavings = Math.round(dailyUnits * 30 * preset.tariff);
+
+  // Sky tint over the photo: dark blue at night, warm orange around sunrise and sunset
+  const isNight = liveFactor < 0.02;
+  const nightTint = Math.min(1, Math.max(0, (0.2 - liveFactor) / 0.2)) * 0.62;
+  const warmTint = liveFactor > 0 ? Math.max(0, 1 - Math.abs(liveFactor - 0.22) / 0.26) * 0.55 : 0;
 
   // Build SVG polyline points for the clear-sky curve (6:00 to 19:00)
   const curve = useMemo(() => {
@@ -118,6 +185,16 @@ export function HeroClearSky() {
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover transition-transform duration-500"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-b from-orange-500 via-amber-400/60 to-transparent mix-blend-soft-light"
+                  style={{ opacity: warmTint }}
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-[#0a1430]"
+                  style={{ opacity: nightTint }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B1526]/90 via-[#0B1526]/25 to-transparent" />
 
@@ -182,14 +259,29 @@ export function HeroClearSky() {
                 </div>
 
                 {/* Clear-Sky Curve SVG + Time Scrubber */}
-                <div className="rounded-2xl border border-border bg-surface/70 p-3.5">
-                  <div className="mb-2 flex items-center justify-between text-xs">
-                    <span className="inline-flex items-center gap-1.5 font-bold text-ink-deep">
-                      <Sun className="h-3.5 w-3.5 text-gold" aria-hidden="true" />
+                <div ref={panel} className="rounded-2xl border border-border bg-surface/70 p-3.5">
+                  <div className="mb-2 flex items-center justify-between gap-2 text-xs">
+                    <span className="inline-flex min-w-0 items-center gap-1.5 font-bold text-ink-deep">
+                      {isNight ? (
+                        <Moon className="h-3.5 w-3.5 shrink-0 text-indigo-500" aria-hidden="true" />
+                      ) : (
+                        <Sun className="h-3.5 w-3.5 shrink-0 text-amber-500" aria-hidden="true" />
+                      )}
                       {t("Clear-Sky Irradiance Curve", "ক্লিয়ার-স্কাই সৌর বিকিরণ বক্ররেখা", "hero-clear-sky/clear-sky-irradiance-curve")}
                     </span>
-                    <span className="font-mono font-semibold text-primary-deep">
-                      {dailyUnits} kWh / day
+                    <span className="flex shrink-0 items-center gap-2">
+                      <span className="font-mono font-semibold text-amber-700">
+                        {dailyUnits} kWh / day
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setAutoplay(!autoplay)}
+                        aria-pressed={autoplay}
+                        aria-label={autoplay ? t("Pause sun animation", "সূর্যের অ্যানিমেশন থামান") : t("Play sun animation", "সূর্যের অ্যানিমেশন চালু করুন")}
+                        className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-amber-300 bg-white text-amber-600 shadow-sm transition-colors hover:bg-amber-50"
+                      >
+                        {autoplay ? <Pause className="h-3.5 w-3.5" aria-hidden="true" /> : <Play className="h-3.5 w-3.5" aria-hidden="true" />}
+                      </button>
                     </span>
                   </div>
 
@@ -201,16 +293,25 @@ export function HeroClearSky() {
                   >
                     <defs>
                       <linearGradient id="clearSkyFill" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#1d7635" stopOpacity="0.32" />
-                        <stop offset="100%" stopColor="#1d7635" stopOpacity="0.02" />
+                        <stop offset="0%" stopColor="#facc15" stopOpacity="0.45" />
+                        <stop offset="100%" stopColor="#fde68a" stopOpacity="0.04" />
                       </linearGradient>
+                      <linearGradient id="clearSkyStroke" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stopColor="#f97316" />
+                        <stop offset="50%" stopColor="#eab308" />
+                        <stop offset="100%" stopColor="#f97316" />
+                      </linearGradient>
+                      <radialGradient id="clearSkySunGlow">
+                        <stop offset="0%" stopColor="#fde047" stopOpacity="0.85" />
+                        <stop offset="100%" stopColor="#fde047" stopOpacity="0" />
+                      </radialGradient>
                     </defs>
                     <polygon points={curve.area} fill="url(#clearSkyFill)" />
                     <polyline
                       points={curve.line}
                       fill="none"
-                      stroke="#1d7635"
-                      strokeWidth="2.5"
+                      stroke="url(#clearSkyStroke)"
+                      strokeWidth="2.75"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
@@ -219,16 +320,19 @@ export function HeroClearSky() {
                       y1={curve.activeY}
                       x2={curve.activeX}
                       y2={curve.height}
-                      stroke="#2bb3a3"
+                      stroke={isNight ? "#818cf8" : "#f59e0b"}
                       strokeWidth="1.5"
                       strokeDasharray="3 3"
                     />
+                    {!isNight && (
+                      <circle cx={curve.activeX} cy={curve.activeY} r="15" fill="url(#clearSkySunGlow)" />
+                    )}
                     <circle
                       cx={curve.activeX}
                       cy={curve.activeY}
-                      r="5.5"
-                      fill="#79e475"
-                      stroke="#1d7635"
+                      r="6"
+                      fill={isNight ? "#e0e7ff" : "#fde047"}
+                      stroke={isNight ? "#6366f1" : "#f59e0b"}
                       strokeWidth="2"
                     />
                   </svg>
@@ -241,7 +345,7 @@ export function HeroClearSky() {
                       <span>6:00 AM</span>
                       <span className="text-ink-deep">
                         {t("Slide sun time:", "সূর্যের সময় সরান:", "hero-clear-sky/slide-sun-time")}{" "}
-                        <strong className="font-mono text-primary-deep">
+                        <strong className="font-mono text-amber-700">
                           {formatHour(hour)}
                         </strong>
                       </span>
@@ -252,10 +356,15 @@ export function HeroClearSky() {
                       type="range"
                       min={6}
                       max={19}
-                      step={0.5}
+                      step="any"
                       value={hour}
-                      onChange={(e) => setHour(parseFloat(e.target.value))}
-                      className="mt-1.5 w-full cursor-pointer accent-primary"
+                      onPointerDown={() => setAutoplay(false)}
+                      onKeyDown={() => setAutoplay(false)}
+                      onChange={(e) => {
+                        setAutoplay(false);
+                        setHour(parseFloat(e.target.value));
+                      }}
+                      className="mt-1.5 w-full cursor-pointer accent-amber-500"
                     />
                   </div>
                 </div>

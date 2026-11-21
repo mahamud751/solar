@@ -36,7 +36,7 @@ export function AerialShowcaseSection() {
   return (
     <section
       aria-labelledby="aerial-heading"
-      className="py-20 sm:py-24"
+      className="py-14 sm:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
@@ -76,42 +76,45 @@ export function AerialShowcaseSection() {
         </div>
 
         {/* Showcase Frame */}
-        <div className="mt-9 overflow-hidden rounded-[2rem] border border-border bg-secondary shadow-elevated">
-          <div className="relative aspect-[16/9] max-h-[34rem] w-full overflow-hidden">
-            <Image
-              key={current.id}
-              src={current.image}
-              alt={current.alt}
-              fill
-              sizes="(max-width: 1280px) 100vw, 1200px"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#091220]/95 via-[#091220]/35 to-transparent" />
+        <div className="mt-7 overflow-hidden rounded-[1.5rem] sm:mt-9 sm:rounded-[2rem] border border-border bg-secondary shadow-elevated">
+          {/* Phones: photo on top, text in a solid panel below it. md+: text overlays the photo. */}
+          <div className="relative">
+            <div className="relative aspect-[4/3] w-full overflow-hidden md:aspect-[16/9] md:max-h-[34rem]">
+              <Image
+                key={current.id}
+                src={current.image}
+                alt={current.alt}
+                fill
+                sizes="(max-width: 1280px) 100vw, 1200px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent md:from-[#091220]/95 md:via-[#091220]/35" />
 
-            {/* Top Left Metric Badge */}
-            <div className="absolute top-5 left-5">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-secondary/75 px-3.5 py-1.5 font-mono text-xs font-bold text-primary backdrop-blur-md">
-                {current.metric}
-              </span>
+              {/* Top Left Metric Badge */}
+              <div className="absolute top-4 left-4 right-4 md:top-5 md:left-5 md:right-auto">
+                <span className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/20 bg-secondary/80 px-3 py-1.5 font-mono text-[11px] font-bold text-primary backdrop-blur-md sm:px-3.5 sm:text-xs">
+                  <span className="truncate">{current.metric}</span>
+                </span>
+              </div>
             </div>
 
-            {/* Bottom Content Overlay */}
-            <div className="absolute right-5 bottom-5 left-5 flex flex-col justify-between gap-4 sm:right-8 sm:bottom-8 sm:left-8 md:flex-row md:items-end">
+            {/* Content: below the photo on phones, overlaid on md+ */}
+            <div className="flex flex-col gap-5 bg-secondary px-5 pt-1 pb-6 sm:px-8 md:absolute md:inset-x-8 md:bottom-8 md:flex-row md:items-end md:justify-between md:gap-4 md:bg-transparent md:p-0">
               <div className="max-w-xl">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
                   {current.label}
                 </p>
-                <h3 className="mt-1.5 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+                <h3 className="mt-1.5 text-[1.375rem] leading-tight font-extrabold tracking-tight text-white sm:text-3xl">
                   {current.headline}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-200">
+                <p className="mt-2 text-sm leading-relaxed text-slate-300 md:text-slate-200">
                   {current.description}
                 </p>
               </div>
 
               <Link
                 href={current.ctaHref}
-                className="inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-white px-5 py-3 text-sm font-extrabold text-ink-deep shadow-card transition-transform hover:-translate-y-0.5 md:self-auto"
+                className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-extrabold text-ink-deep shadow-card transition-transform hover:-translate-y-0.5 sm:w-auto sm:self-start md:self-auto"
               >
                 <span>{current.ctaLabel}</span>
                 <ArrowRight className="h-4 w-4 text-primary-deep" aria-hidden="true" />
@@ -121,7 +124,7 @@ export function AerialShowcaseSection() {
 
           {/* 3-Tab Scene Switcher */}
           <div
-            className="grid border-t border-white/10 bg-secondary sm:grid-cols-3"
+            className="grid grid-cols-3 border-t border-white/10 bg-secondary"
             role="group"
             aria-label={t("Aerial site inspection scenes", "আকাশ থেকে সাইট পরিদর্শনের দৃশ্য", "aerial-showcase-section/aerial-site-inspection-scenes")}
           >
@@ -133,7 +136,7 @@ export function AerialShowcaseSection() {
                   type="button"
                   onClick={() => setActiveIndex(idx)}
                   aria-current={isCurrent ? "true" : undefined}
-                  className={`relative border-b border-white/10 p-5 text-left transition-colors sm:border-r sm:border-b-0 sm:last:border-r-0 ${
+                  className={`relative border-r border-white/10 px-3 py-4 text-left transition-colors last:border-r-0 sm:p-5 ${
                     isCurrent
                       ? "bg-white/10 text-white"
                       : "text-slate-400 hover:bg-white/5 hover:text-white"
@@ -145,10 +148,12 @@ export function AerialShowcaseSection() {
                       className="absolute inset-x-0 top-0 h-1 bg-solnce-gold"
                     />
                   )}
-                  <span className="block text-xs font-bold uppercase tracking-wider text-primary">
-                    0{idx + 1} · {slide.label}
+                  <span className="block text-[11px] leading-snug font-bold uppercase tracking-wider text-primary sm:text-xs">
+                    <span className="block sm:inline">0{idx + 1}</span>
+                    <span className="hidden sm:inline"> · </span>
+                    <span className="mt-0.5 block sm:mt-0 sm:inline">{slide.label}</span>
                   </span>
-                  <span className="mt-1 block text-sm font-bold">
+                  <span className="mt-1 hidden text-sm font-bold sm:block">
                     {slide.headline}
                   </span>
                 </button>
